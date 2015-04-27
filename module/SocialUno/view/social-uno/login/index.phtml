@@ -1,0 +1,107 @@
+<!-- -->
+<div class="div-pagina-login div-pagina">
+	
+	<!-- -->
+	<div class="div-limiter">
+		
+		<!-- -->
+		<div class="div-conteudo-pagina-login div-box">
+		
+			<!-- -->
+			<div class="div-termos-de-uso transition-all">
+			
+				<h3 class="titulo-box">Termos de uso</h3>
+			
+				<p>Ao clicar em <strong>criar</strong> você está aceitando os <a class="a-classic" href="<?=D_LINK?>">termos de uso</a> e afirmando
+				ser maior de 18 anos.</p>
+			
+			</div>
+		
+			<!-- -->
+			<div class="div-form-cadastro transition-all">
+			
+                            <h3 class="titulo-box">Cadastro</h3>
+  
+                             <!-- -->
+                            <div class="form-box div-complete-facebook">
+                                <span class="facebook-complete"> facebook.com/ </span>  <?= $this->formRow($form->get('facebook_dados')); ?>
+                                
+                                <div class="img-facebook"> </div>
+                            </div>
+                             
+                              <!-- -->
+                            <div class="form-box">
+                                   <?= $this->formRow($form->get('id_facebook')); ?>
+                            </div>
+                            
+                            <!-- -->
+                            <div class="form-box">
+                                   <?= $this->formRow($form->get('nome_cadastro')); ?>
+                            </div>
+
+                            <!-- -->
+                            <div class="form-box">
+                                    <?= $this->formRow($form->get('email')); ?>					
+                            </div>
+
+                            <!-- -->
+                            <div class="form-box">
+                                    <?= $this->formRow($form->get('novo_usuario_senha')); ?>					
+                            </div>
+
+                            <!-- -->
+                            <div class="form-box">
+                                    <?= $this->formRow($form->get('novo_usuario_senha_confirmar')); ?>	
+                            </div>
+                            
+                            <!-- -->
+                            <div class="form-box">
+                                    <?= $this->formRow($form->get('data_nascimento')); ?>	
+                            </div>
+
+                            <!-- -->
+                            <div class="form-box">
+                                    <?= $this->formSelect($form->get('genero')); ?>	
+                            </div>
+
+                            <!-- -->
+                            <div class="form-box text-align-right">
+                                    <?= $this->formSubmit($form->get('cadastrar')); ?>	
+                            </div>
+
+			</div>
+		
+		</div>
+		
+		<!-- -->
+		<div class="div-form-login div-box transition-all">
+		
+			<h3 class="titulo-box">Autenticação</h3>
+			
+				<!-- -->
+				<div class="form-box">
+					<?= $this->formRow($form->get('login')); ?>		
+				</div>
+				
+				<!-- -->
+				<div class="form-box">
+					<?= $this->formRow($form->get('senha')); ?>			
+				</div>
+                                    
+				<!-- -->
+				<div class="form-box text-align-right">
+                                    <?= $this->formSubmit($form->get('logar')); ?>
+				</div>
+		
+		
+		</div>
+	
+	</div>
+	
+</div>
+
+<?php 
+    echo $this->headScript()  
+       ->prependFile($this->basePath() . '/js/login/login.js');
+            
+?>

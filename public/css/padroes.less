@@ -1,0 +1,137 @@
+/*
+	
+	PADRÕES LESS
+	
+*/
+
+* {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	vertical-align: middle;
+	color: @cinza;
+	line-height: 1.2;
+	.setBoxSizing(border-box);
+	.setOutline(0);
+}
+
+div,
+img {
+	display: inline-block;
+}
+
+textarea {
+	resize: none;
+}
+
+p {
+	font-size: 13px;
+	text-align: justify;
+}
+
+strong {
+	font-weight: 600;
+}
+
+a {
+	text-decoration: none;
+}
+a.a-classic {
+	font-weight: 600;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+/* PAGE */
+.div-limiter {
+	float: none;
+	width: 1000px;
+	max-width: 1030px;
+	display: inline-block;
+	position: relative;
+	top: -10px;
+	left: 0;
+}
+.div-pagina {
+	float: left;
+	width: 100%;
+	display: inline-block;
+}
+.div-box {
+	padding: 15px;
+	border: 1px solid @cinzaBorda;
+	background: @branco;
+	.setBorderRadius(all, 4px);
+	.setBoxShadow(1px 1px 10px @cinzaBorda);
+}
+	.div-box .titulo-box {
+		text-align: left;
+		margin: 0 0 8px 0;
+	}
+
+/* FORM */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+	padding: 5px 10px;
+	border: 1px solid @cinzaBorda;
+	width: 100%;
+	background: @branco;
+	height: 30px;
+	font-size: 13px;
+	text-align: left;
+	color: @cinzaFonte;
+	.setBorderRadius(all, 4px);
+	.setBoxShadow(inset 0 1px 1px rgba(0,0,0,.075));
+}
+
+.form-box {
+	width: 100%;
+	margin: 4px 0;
+	float: left;
+	display: inline-block;
+	clear: both;
+}
+
+button,
+.btn {
+	padding: 5px 10px;
+	border: 0;
+	height: 30px;
+	font-size: 13px;
+	cursor: pointer;
+	.setBorderRadius(all, 4px);
+}
+.btn.principal {
+	background: @corPrincipal;
+	color: @branco;
+	&:hover {
+		background: darken(@corPrincipal, 15%);	
+	}
+}
+
+/* TEXT */
+.text-align-left {
+	text-align: left;
+}
+.text-align-right {
+	text-align: right;
+}
+.text-align-center {
+	text-align: center;
+}
+.text-align-justity {
+	text-align: justify;
+}
+
+/* TRANSITION */
+.transition {
+	.setTransition(all 500ms cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+.transition-all,
+.transition-all * {
+	.setTransition(all 500ms cubic-bezier(0.25, 0.1, 0.25, 1));
+}

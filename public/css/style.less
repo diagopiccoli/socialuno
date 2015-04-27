@@ -1,0 +1,118 @@
+/*
+
+	STYLE LESS
+
+*/
+
+@import "ambiente.less";
+@import "cores.less";
+@import "fontes.less";	
+@import "funcoes.less";
+@import "icons.less";
+@import "padroes.less";
+
+
+* {
+	font-family: @fontePadrao;
+	font-weight: 300;
+	word-wrap: break-word;
+}
+body {
+	background: @cinzaFundo;
+}
+
+.div-total-topo,
+.div-total-meio,
+.div-total-rodape {
+	float: left;
+	width: 100%;
+	min-width: 1030px;
+	display: inline-block;
+}
+
+.div-total-topo {
+	height: 55px;
+}
+	
+	.navbar {
+		padding: 0 15px;
+		width: 100%;
+		min-width: 1030px;
+		height: 45px;
+		border-bottom: 2px solid darken(@corPrincipal, 5%);
+		background: @corPrincipal;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 900;
+		overflow: hidden;
+	}
+	@media only screen and (min-width: 1001px) {
+		.navbar {
+			position: fixed;
+		}
+	}
+		.navbar-logo,
+		.footerbar-logo {
+			height: 45px;
+			position: absolute;
+			top: 5px;
+			left: 0;			
+		}
+			.navbar-logo > a,
+			.navbar-logo > a > span {
+				font-size: 30px;
+			}
+			.navbar-logo > a {
+				height: 100%;
+				display: block;
+				color: @branco;
+			}
+				.navbar-logo > a > span {
+					color: darken(@corPrincipal, 15%);
+				}
+
+.div-total-meio {
+	padding: 15px;
+}
+	
+	/* LOGIN */
+	.div-pagina-login {
+		position: relative;		
+	}
+		.div-form-login {
+			width: 300px;
+			float: left;
+		}
+		
+		.div-conteudo-pagina-login {
+			margin: 0 15px 0 0;
+			width: 685px;
+			float: left;
+		}
+			.div-form-cadastro,
+			.div-termos-de-uso {
+				width: 100%;
+				float: left;
+			}
+			.div-termos-de-uso {
+				margin: 0 0 10px 0;
+			}
+
+.div-total-rodape {
+	height: 55px;
+	position: relative;
+	background: @preto;
+	left: 0;
+	bottom: 0;
+}
+@media only screen and (min-height: 500px) {
+	.div-total-rodape {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+	}	
+}
+	.footerbar {
+		height: 45px;
+	}

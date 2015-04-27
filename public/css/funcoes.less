@@ -1,0 +1,170 @@
+/*
+	
+	FUNÇÕES LESS	
+
+*/
+
+/* ANIMATION */
+.setAnimation(@vlr) {
+	-webkit-animation-duration: @vlr;
+	animation-duration: @vlr;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+.setAnimInteration(@vlr) {
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+}
+
+/* BORDER RADIUS */
+.setBorderRadius(@dir, @tam) {
+
+	.setBorderRadius() when (@dir = all) {
+		border-radius: @tam;
+		-moz-border-radius: @tam;
+		-webkit-border-radius: @tam;
+	} .setBorderRadius();
+	
+	.setBorderRadius() when (@dir = top) {
+		border-top-left-radius: @tam;
+		border-top-right-radius: @tam;
+		-moz-border-radius-topleft: @tam;
+		-moz-border-radius-topright: @tam;
+		-webkit-border-top-left-radius: @tam;
+		-webkit-border-top-right-radius: @tam;
+	} .setBorderRadius();
+	
+	.setBorderRadius() when (@dir = topleft) {
+		border-top-left-radius: @tam;
+		-moz-border-radius-topleft: @tam;
+		-webkit-border-top-left-radius: @tam;
+	} .setBorderRadius();
+	
+	.setBorderRadius() when (@dir = topright) {
+		border-top-right-radius: @tam;
+		-moz-border-radius-topright: @tam;
+		-webkit-border-top-right-radius: @tam;
+	} .setBorderRadius();
+	
+	.setBorderRadius() when (@dir = bottom) {
+		border-bottom-left-radius: @tam;
+		border-bottom-right-radius: @tam;
+		-moz-border-radius-bottomleft: @tam;
+		-moz-border-radius-bottomright: @tam;
+		-webkit-border-bottom-left-radius: @tam;
+		-webkit-border-bottom-right-radius: @tam;
+	} .setBorderRadius();
+	
+	.setBorderRadius() when (@dir = bottomleft) {
+		border-bottom-left-radius: @tam;
+		-moz-border-radius-bottomleft: @tam;
+		-webkit-border-bottom-left-radius: @tam;
+	} .setBorderRadius();
+	
+	.setBorderRadius() when (@dir = bottomright) {
+		border-bottom-right-radius: @tam;
+		-moz-border-radius-bottomright: @tam;
+		-webkit-border-bottom-right-radius: @tam;
+	} .setBorderRadius();
+	
+	.setBorderRadius() when (@dir = left) {
+		border-top-left-radius: @tam;
+		-moz-border-radius-topleft: @tam;
+		-webkit-border-top-left-radius: @tam;
+		border-bottom-left-radius: @tam;
+		-moz-border-radius-bottomleft: @tam;
+		-webkit-border-bottom-left-radius: @tam;
+	} .setBorderRadius();
+	
+	.setBorderRadius() when (@dir = right) {
+		border-top-right-radius: @tam;
+		-moz-border-radius-topright: @tam;
+		-webkit-border-top-right-radius: @tam;
+		border-bottom-right-radius: @tam;
+		-moz-border-radius-bottomright: @tam;
+		-webkit-border-bottom-right-radius: @tam;
+	} .setBorderRadius();
+	
+}
+
+/* BOX SHADOW */
+.setBoxShadow(@vlr) {
+	box-shadow: @vlr;
+	-khtml-box-shadow: @vlr;
+	-moz-box-shadow: @vlr;
+	-ms-box-shadow: @vlr;
+	-o-box-shadow: @vlr;
+	-webkit-box-shadow: @vlr;
+}
+
+/* BOX SIZING */
+.setBoxSizing(@vlr) {
+	box-sizing: @vlr;
+	-khtml-box-sizing: @vlr;
+	-moz-box-sizing: @vlr;
+	-ms-box-sizing: @vlr;
+	-o-box-sizing: @vlr;
+	-webkit-box-sizing: @vlr;
+}
+
+/* OUTLINE */
+.setOutline(@vlr) {
+	outline: @vlr !important;
+	-khtml-outline: @vlr !important;
+	-moz-outline: @vlr !important;
+	-ms-outline: @vlr !important;
+	-o-outline: @vlr !important;
+	-webkit-outline: @vlr !important;
+}
+
+/* TRANSITION */
+.setTransition(@vlr) {
+	transition: @vlr;
+	-khtml-transition: @vlr;
+	-moz-transition: @vlr;
+	-ms-transition: @vlr;
+	-o-transition: @vlr;
+	-webkit-transition: @vlr;
+}
+
+/* TRANSFORM */
+.setTransform(@vlr) {
+	-ms-transform: @vlr;
+    -webkit-transform: @vlr;
+    transform: @vlr;
+}
+
+/* TEXT SHADOW */
+.setTextShadow(@vlr) {
+	text-shadow: @vlr;
+	-khtml-text-shadow: @vlr;
+	-moz-text-shadow: @vlr;
+	-ms-text-shadow: @vlr;
+	-o-text-shadow: @vlr;
+	-webkit-text-shadow: @vlr;
+}
+
+/* OPACITY */
+.setOpacity(@opAll, @opIE, @opOverride) {
+
+	.setOpacity() when (@opOverride = null) {
+		opacity: @opAll;
+		filter: alpha(opacity=@opIE);
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{opIE})";
+		-moz-opacity: @opAll;
+		-khtml-opacity: @opAll;
+		-o-opacity: @opAll;
+		-webkit-opacity: @opAll;
+	} .setOpacity();
+
+	.setOpacity() when (@opOverride = important) {
+		opacity: @opAll !important;
+		filter: alpha(opacity=@opIE);
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{opIE})" !important;
+		-moz-opacity: @opAll !important;
+		-khtml-opacity: @opAll !important;
+		-o-opacity: @opAll !important;
+		-webkit-opacity: @opAll !important;
+	} .setOpacity();
+
+}
