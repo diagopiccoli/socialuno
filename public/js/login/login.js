@@ -117,7 +117,7 @@ function cadastrar(obj)
                     }
                 }
 
-                window.location.href = 'social-uno/index/index';
+                window.location.href = '/social-uno/index/index';
                 return;
 
             },
@@ -156,7 +156,7 @@ function logar(obj)
             function (data, status) {
 
                 if (data) {
-                    window.location.href = 'social-uno/index/index';
+                    window.location.href = '/social-uno/index/index';
                     return;
                 }
 
@@ -164,6 +164,6 @@ function logar(obj)
 
             },
             'json' // tipo dos dados q ira retornar, nesse caso ira esperar "json"
-            );
+    );
 }
 
