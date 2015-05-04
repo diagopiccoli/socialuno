@@ -1,3 +1,5 @@
+$('[data-type="data"]').mask('99/99/999');
+
 $('.div-form-login > div > input').keypress(function (event) {
     if (event.which == 13) {
         $('#logar').click();
@@ -117,7 +119,7 @@ function cadastrar(obj)
                     }
                 }
 
-                window.location.href = 'social-uno/index/index';
+                window.location.href = '/social-uno/index/index';
                 return;
 
             },
@@ -156,7 +158,7 @@ function logar(obj)
             function (data, status) {
 
                 if (data) {
-                    window.location.href = 'social-uno/index/index';
+                    window.location.href = '/social-uno/index/index';
                     return;
                 }
 
@@ -164,6 +166,6 @@ function logar(obj)
 
             },
             'json' // tipo dos dados q ira retornar, nesse caso ira esperar "json"
-            );
+    );
 }
 
