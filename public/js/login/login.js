@@ -1,3 +1,5 @@
+$('[data-type="data"]').mask('99/99/999');
+
 $('.div-form-login > div > input').keypress(function (event) {
     if (event.which == 13) {
         $('#logar').click();

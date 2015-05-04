@@ -86,7 +86,7 @@ class Login extends Form
             'attributes' => array(
                 'id' => 'data_nascimento',
                 'placeholder' => 'Data de nascimento',
-                'data-type' => 'date',
+                'data-type' => 'data',
             ),
         ));
         

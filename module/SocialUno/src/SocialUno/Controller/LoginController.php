@@ -48,6 +48,16 @@ class LoginController extends ActionController
             }
         }
 
+        if($return['result']){
+
+            $values = ['email' => $values['login'], 'senha' => $values['senha']];
+
+            $usuarioLogin = $this->getService('SocialUno\Service\Usuario')->login($values);
+
+            $session = $this->getServiceLocator()->get('Session');
+            $session->offsetSet('user', $usuarioLogin);
+        }
+
         $this->response->setContent(json_encode($return));
         return $this->response;
     }
