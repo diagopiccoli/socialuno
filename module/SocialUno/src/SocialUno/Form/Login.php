@@ -86,10 +86,10 @@ class Login extends Form
             'attributes' => array(
                 'id' => 'data_nascimento',
                 'placeholder' => 'Data de nascimento',
-                'data-type' => 'data',
-            ),
+                'data-mask' => '99/99/9999'
+            ),  
         ));
-        
+            
         $this->add(array(
             'name' => 'login',
             'type' => 'Text',

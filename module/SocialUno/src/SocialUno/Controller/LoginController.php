@@ -12,6 +12,12 @@ class LoginController extends ActionController
     public function indexAction()
     {
         $form = new Login();
+
+
+        $session = $this->getServiceLocator()->get('Session');
+        if ($session->offsetGet('user'))
+            return $this->redirect()->toUrl('/social-uno/index/index');  
+
         return new ViewModel([
             'form' => $form
         ]);
@@ -50,7 +56,7 @@ class LoginController extends ActionController
 
         if($return['result']){
 
-            $values = ['email' => $values['login'], 'senha' => $values['senha']];
+            $values = ['login' => $values['login'], 'senha' => $values['senha']];
 
             $usuarioLogin = $this->getService('SocialUno\Service\Usuario')->login($values);
 

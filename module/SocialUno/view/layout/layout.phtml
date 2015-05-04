@@ -18,11 +18,14 @@
          ; ?>
 
         <!-- Scripts -->
-        <?php echo $this->headScript()  
+        <?php echo $this->headScript() 
+        	->prependFile($this->basePath() . '/js/global.js')
+        	->prependFile($this->basePath() . '/js/jquery.mask.js')
             ->prependFile($this->basePath() . '/js/jquery.min.js')
             ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
             ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-           ->prependFile($this->basePath() . '/js/less.js')
+            ->prependFile($this->basePath() . '/js/less.js')
+
         ; ?>
       
     </head>
