@@ -9,12 +9,12 @@
         ?>
         <!--<link href="http://fonts.googleapis.com/css?family=Raleway:600,400,300" rel="stylesheet" type="text/css" media="all">-->
         <!--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" media="all">-->
-      
         <link rel="stylesheet/less" href="<?=$this->basePath()?>/css/style.less">
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
                         ->prependStylesheet($this->basePath() . '/css/animate.css')
                         ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
          ; ?>
 
         <!-- Scripts -->
@@ -22,41 +22,48 @@
             ->prependFile($this->basePath() . '/js/jquery.min.js')
             ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
             ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/js/less.js')
-            
+           ->prependFile($this->basePath() . '/js/less.js')
         ; ?>
       
     </head>
     <body>
-       <!-- -->
-       <div class="div-total-topo">
-            <div class="navbar">
-                <!-- -->
-                <div class="div-limiter">
-                    <!-- -->
-                    <div class="navbar-logo">
-                            <a href="<?=$this->basePath()?>/">Social<span>Uno</span></a>	
-                   </div>
-                </div>
-            </div>
-       </div>
-       	<div class="div-total-meio">
-            <div class="container">
-                <?php echo $this->content; ?>
-            </div>
-        </div>
-       
-       <div class="div-total-rodape">
-            <div class="footerbar">
-                <!-- -->
-                <div class="div-limiter">
-                        <!-- -->
-                        <div class="footerbar-logo">
-                                <a href="<?=$this->basePath()?>/">Social<span>Uno</span></a>	
-                        </div>
-                </div>
-            </div>
-       </div>
-        <?php echo $this->inlineScript() ?>
+    	
+		<!-- -->
+		<div class="div-total-topo">
+			<div class="navbar">
+				<div class="div-limiter">
+					<div class="navbar-logo">
+					    <a href="<?=$this->basePath()?>/">Social<span>Uno</span></a>	
+					</div>
+					<div class="navbar-options">
+						<ul>
+							<li><span class="fa fa-user-plus"></span></li>
+							<li><span class="fa fa-bell-o"></span></li>
+							<li><span class="fa fa-cog"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- -->
+		<div class="div-total-meio">
+			<div class="container">
+			    <?php echo $this->content; ?>
+			</div>
+		</div>
+		
+		<!-- -->
+		<div class="div-total-rodape">
+		    <div class="div-limiter">
+		        <div class="footerbar-desc">
+		         	<a href="<?=$this->basePath()?>/">SocialUno</a><br>
+		         	<span>Todos os direitos reservados &copy;</span>
+		        </div>
+		    </div>
+		</div>
+		
+		<?php echo $this->inlineScript() ?>
+        
     </body>
 </html>
