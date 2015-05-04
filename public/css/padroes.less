@@ -69,6 +69,19 @@ a.a-classic {
 		text-align: left;
 		margin: 0 0 8px 0;
 	}
+	
+/* NOTICE */
+.notice {
+	padding: 5px;
+	position: absolute;
+	top: 2px;
+	right: 0;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1;
+	color: @corPrincipal;
+	.setBorderRadius(all, 50%);
+}
 
 /* FORM */
 input[type="text"],
@@ -105,6 +118,11 @@ button,
 	cursor: pointer;
 	.setBorderRadius(all, 4px);
 }
+	.btn > i {
+		font-size: 15px;
+		line-height: 1; 
+	}
+
 .btn.principal {
 	background: @corPrincipal;
 	color: @branco;
@@ -112,6 +130,9 @@ button,
 		background: darken(@corPrincipal, 15%);	
 	}
 }
+	.btn.principal > i {
+		color: @branco;
+	}
 
 /* TEXT */
 .text-align-left {
