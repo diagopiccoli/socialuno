@@ -15,7 +15,7 @@ class IndexController extends AbstractActionController
 
         $session = $this->getServiceLocator()->get('Session');
 
-        // logar   $session->offsetUnset('user');
+        //   $session->offsetUnset('user');
            
         if (!$session->offsetGet('user'))
             return $this->redirect()->toUrl('/social-uno/login/index');                       
