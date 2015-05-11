@@ -19,7 +19,9 @@ $('#facebook_dados').blur(function () {
         if(dados.error){
             return;
         }
+
         $('#id_facebook').val(dados.id);
+        $('#foto_facebook').val('https://graph.facebook.com/'+dados.id+'/picture?type=large')
         $('#nome_cadastro').val(dados.name);
             if(dados.gender == 'male'){
             $('#genero').val('M');
@@ -30,8 +32,6 @@ $('#facebook_dados').blur(function () {
        $('.img-facebook').html('<img src="'+dados.picture.data.url+'">');   
        
     });
-
-
 
 });
 
@@ -79,6 +79,7 @@ function cadastrar(obj)
         'data_nascimento': $('#data_nascimento').val(),
         'genero': $('#genero').val(),
         'id_facebook' : $('#id_facebook').val(),
+        'foto_facebook': $('#foto_facebook').val()
     };
 
     if ($.trim(login) == '') {

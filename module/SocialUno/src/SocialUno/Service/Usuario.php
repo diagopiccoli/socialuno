@@ -4,6 +4,7 @@ namespace SocialUno\Service;
 
 use SocialUno\Service\Service;
 use SocialUno\Model\Usuario as UsuarioModel;
+use SocialUno\Model\FotosPerfis as FotosPerfis;
 
 class Usuario extends Service
 {
@@ -34,8 +35,11 @@ class Usuario extends Service
         if($this->getObjectManager()->getRepository('SocialUno\Model\Usuario')->findBy(array('email' => $values['login']))){
             return ['valido' => false, 'tipo' => 'email'];
         }
+
+        //var_dump($values); exit;
         
-        $this->getObjectManager()->persist($this->setUsuario($values)); 
+        $newUsuario = $this->getObjectManager()->persist($this->setUsuario($values)); 
+        $this->getObjectManager()->persist($this->setFotoPerfil($values['foto_facebook'], $newUsuario));
         
         try {
             $this->getObjectManager()->flush();
@@ -43,6 +47,20 @@ class Usuario extends Service
         } catch (Exception $exc) {
             return ['valido' => false];
         }
+
+    }
+
+    private function setFotoPerfil($foto, $newUsuario)
+    {
+        if($foto == ''){
+            $foto = '/images/sem_foto.jpg';
+        }
+
+        $fotoPerfil = new FotosPerfis();
+        $fotoPerfil->setUsuario($newUsuario);
+        $fotoPerfil->setCaminho($foto);
+
+        return $fotoPerfil;
     }
     
     private function setUsuario(array $values)

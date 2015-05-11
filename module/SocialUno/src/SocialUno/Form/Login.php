@@ -20,6 +20,14 @@ class Login extends Form
                 'id' => 'id_facebook'
             ),
         ));
+
+        $this->add(array(
+            'name' => 'foto_facebook',
+            'type' => 'Hidden',
+            'attributes' => array(
+                'id' => 'foto_facebook'
+            ),
+        ));
         
         $this->add(array(
             'name' => 'facebook_dados',

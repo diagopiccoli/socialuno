@@ -48,13 +48,13 @@ class Usuario
     protected $data_cadastro;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $nome;
 
     /**
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="string", nullable=false)
      * @var string
      */
     protected $nome_exibicao;

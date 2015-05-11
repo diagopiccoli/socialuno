@@ -26,7 +26,7 @@ class FotosPerfis
     protected $usuario;
 
     /**
-     * @ORM\Column(type="integer") 
+     * @ORM\Column(type="string") 
      * @var strings
      */
     protected $caminho;
