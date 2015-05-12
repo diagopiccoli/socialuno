@@ -1,0 +1,40 @@
+/*
+	
+	MODAL LESS
+	
+*/
+
+body.modal-open {
+	overflow: hidden;
+}
+.div-modal-fundo {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,.9);
+	z-index: 999;
+	display: none;
+	.setOpacity(0,0,null);
+}
+.div-modal-fundo.transition-open {
+	display: inline-block;
+}
+.div-modal-fundo.transition-close {
+	.setOpacity(0,0,important);
+}
+.div-modal-fundo.open {
+	display: inline-block;
+	.setOpacity(1,100,null);
+}
+	.div-conteudo-modal {
+		top: 60px;
+		position: relative;
+		width: 1000px;
+		min-height: 250px;
+		.setBoxShadow(none);
+	}
+	.modal-foto-perfil {
+		width: 500px !important;
+	}

@@ -10,6 +10,8 @@
 @import "funcoes.less";
 @import "icons.less";
 @import "padroes.less";
+@import "tooltip.less";
+@import "modal.less";
 
 
 * {
@@ -193,11 +195,21 @@ body {
 		.div-colum-perfil > div {
 			margin: 0 0 15px 0;
 			width: 185px;
-			height: 150px;
+			height: 185px;
 			float: left;
 			display: inline-block;
 			clear: both;
 		}
+		.div-foto-perfil {
+			padding: 0;
+			position: relative;
+		}
+			.div-foto-perfil > a > img {
+				border: 5px solid @branco;
+				width: 182.5px;
+				height: 182.5px;
+				.setBorderRadius(all, 2px);			
+			}
 			.div-colum-perfil > div > ul {
 				padding: 0 5px;
 				width: 100%;
@@ -217,7 +229,7 @@ body {
 						text-align: left;
 						line-height: 1.5;
 						font-size: 13px;
-						.setBorderRadius(all, 2px);
+						.setBorderRadius(all, 2px);						
 						&:hover {
 							background: darken(@corPrincipal, 15%);
 							color: @branco;

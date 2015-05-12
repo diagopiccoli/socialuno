@@ -18,14 +18,16 @@
          ; ?>
 
         <!-- Scripts -->
-        <?php echo $this->headScript() 
+        <?php echo $this->headScript()
+        	->prependFile($this->basePath() . '/js/less.js')
         	->prependFile($this->basePath() . '/js/global.js')
         	->prependFile($this->basePath() . '/js/jquery.mask.js')
-            ->prependFile($this->basePath() . '/js/jquery.min.js')
-            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/js/less.js')
-
+        	->prependFile($this->basePath() . '/js/plugin/modal.js')
+            //->prependFile($this->basePath() . '/js/plugin/jquery.bootstrap.js')
+            ->prependFile($this->basePath() . '/js/plugin/jquery.tooltip.js')
+            ->prependFile($this->basePath() . '/js/jquery.js')
+            //->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            //->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
         ; ?>
       
     </head>
@@ -43,7 +45,7 @@
 							<li><a href="javascript:void(0)"><span class="fa fa-user-plus"></span></a></li>
 							<li><a href="javascript:void(0)"><span class="fa fa-bell-o"></span></a></li>
 							<li><a href="javascript:void(0)"><span class="fa fa-cog"></span></a></li>
-							<li><a href="javascript:void(0)"><span class="fa fa-power-off"></span></a></li>
+							<li><a href="javascript:logout()"><span class="fa fa-power-off"></span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -65,7 +67,7 @@
 		         	<span>Todos os direitos reservados &copy;</span>
 		        </div>
 		    </div>
-		</div>
+		</div>	
 		
 		<?php echo $this->inlineScript() ?>
         
