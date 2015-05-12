@@ -40,8 +40,21 @@ class IndexController extends ActionController
         $session = $this->getServiceLocator()->get('Session');
         $session->offsetUnset('user');
         
-        $result = array('login' => 'ok');
+        $result = array('login' => 'ok');   
         $this->response->setContent(json_encode($result));
         return $this->response;
     }
+    
+    public function ajaxBuscaUsuariosAction()
+    {
+         $result = $this->getService('SocialUno\Service\Usuario')->findUsuariosByName($this->getRequest()->getPost()['data']);
+         $view = new ViewModel(
+                ['usuarios' => $result]
+        );
+         
+        $view->setTerminal(true); 
+        
+        return $view;
+    }
+    
 }

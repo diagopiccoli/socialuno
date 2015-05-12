@@ -1,0 +1,27 @@
+.resposta-busca-usuarios{
+    height: 300px;
+    overflow: hidden;
+      width: 100%;
+  margin-top: 5px;
+    background: #fff;
+    box-shadow: 1px 1px 10px #000;
+    
+}
+
+.icon-busca{
+    position: absolute;
+    top: 22px;
+    left: 960px;
+    background: #fff;
+}
+
+
+/* DISPLAY */
+
+.hide{
+    display: none;
+}
+
+.open{
+    display: block;
+}

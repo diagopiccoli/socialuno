@@ -5,8 +5,6 @@ $('.div-form-login > div > input').keypress(function (event) {
     }
 });
 
-
-
 $('#facebook_dados').blur(function () {
     $(this).css('border', '');
     if ($.trim($(this).val()) == '') {
@@ -33,7 +31,12 @@ $('#facebook_dados').blur(function () {
        
     });
 
+}).keyup(function (){
+    $('#id_facebook').val('');
+    $('#foto_facebook').val('');
+    $('.img-facebook > img').attr('src', '');
 });
+    
 
 $('.div-form-cadastro > div > input ').blur(function () {
     $(this).removeAttr('style');

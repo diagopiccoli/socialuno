@@ -103,4 +103,18 @@ class Usuario extends Service
         
     }
     
+    public function findUsuariosByName($values)
+    {
+        $select = $this->getObjectManager()->createQueryBuilder()
+                ->select('foto.caminho', 'usu.id' ,'usu.nome_exibicao')
+                ->from('SocialUno\Model\FotosPerfis', 'foto')
+                ->join('foto.usuario', 'usu')
+                ->orderBy('usu.nome_exibicao', 'ASC')
+                ->where("usu.nome_exibicao LIKE ?1")
+                ->setParameter(1, $values['busca'] . "%");
+
+        return $select->getQuery()->getResult();
+      
+    }
+    
 }

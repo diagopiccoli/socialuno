@@ -1,0 +1,14 @@
+<?php
+    
+    foreach($usuarios as $list){ ?>
+        
+    <div class="usuarios-busca" id="usuario_<?=$list['id']?>"> 
+            
+            <?= $list['nome_exibicao'] ?>
+    
+                <img src="<?=$list['caminho']?>">
+            
+    </div>
+        
+<?php    }
+

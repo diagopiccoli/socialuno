@@ -12,8 +12,6 @@ class LoginController extends ActionController
     public function indexAction()
     {
         $form = new Login();
-
-
         $session = $this->getServiceLocator()->get('Session');
         if ($session->offsetGet('user'))
             return $this->redirect()->toUrl('/social-uno/index/index');  
