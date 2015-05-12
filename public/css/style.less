@@ -32,7 +32,7 @@ body {
 }
 
 .div-total-topo {
-	height: 55px;
+	height: 45px;
 }
 	
 	.navbar {
@@ -52,14 +52,19 @@ body {
 		.navbar {
 			position: fixed;
 		}
-	}
+	}	
 		.navbar-logo,
 		.footerbar-logo {
-			height: 45px;
-			position: absolute;
-			top: 5px;
-			left: 0;			
+			display: inline-block;			
 		}
+		.navbar-logo {
+			margin-top: 5px;
+			float: left;
+		}
+		.footerbar-logo {
+			float: right;
+		}
+		
 			.navbar-logo > a,
 			.navbar-logo > a > span {
 				font-size: 30px;
@@ -74,13 +79,53 @@ body {
 				}
 		.navbar-options {
 			position: absolute;
-			top: 5px;
+			top: 0;
 			right: 0;
 			height: 45px;
 		}
-			.navbar-options > ul > li {
-				display: inline;
+			.navbar-options > ul > li,
+			.navbar-options > ul > li > a {
+				display: inline-block;
+				height: 45px;
 			}
+				.navbar-options > ul > li > a {
+					top: 5px;
+					width: 35px;
+					height: 35px;
+					border: 1px solid darken(@corPrincipal, 10%);
+					background: darken(@corPrincipal, 5%);
+					position: relative;
+					.setBorderRadius(all, 50%);
+					&:hover {
+						background: darken(@corPrincipal, 10%);
+					}	
+				}
+					.navbar-options > ul > li > a > span {
+						color: @branco;
+						line-height: 1;
+						position: absolute;
+						.setTextShadow(1px 1px 1px @cinzaFonte);
+					}
+					.navbar-options > ul > li > a > span.fa-user-plus {
+						top: 8px;
+						left: 7px;
+						font-size: 18px;
+					}
+					.navbar-options > ul > li > a > span.fa-bell-o {
+						top: 7px;
+						left: 7px;
+						font-size: 19px;
+					}
+					.navbar-options > ul > li > a > span.fa-cog {
+						top: 7px;
+						left: 8.5px;
+						font-size: 20px;
+					}
+					.navbar-options > ul > li > a > span.fa-power-off {
+						top: 7px;
+						left: 8px;
+						font-size: 20px;
+					}
 
 .div-total-meio {
 	padding: 15px 0;
@@ -109,6 +154,34 @@ body {
 			.div-termos-de-uso {
 				margin: 0 0 10px 0;
 			}
+			.div-complete-facebook {
+				position: relative;
+			}
+				.div-complete-facebook > input {
+					padding-left: 120px;
+					padding-right: 30px;
+					float: left;
+					width: 590px;
+				}
+				.div-complete-facebook > .img-facebook {
+					width: 50px;
+					height: 50px;
+					position: absolute;
+					top: -20px;
+					right: 0;
+					overflow: hidden;
+					.setBoxShadow(1px 1px 5px @cinzaFonte);
+					.setBorderRadius(all, 50%);
+				}
+					.div-complete-facebook > .img-facebook > img {
+						max-width: 50px;
+						max-height: 50px;
+					}
+				.div-complete-facebook > .facebook-complete {
+					position: absolute;
+					left: 10px;
+					top: 6px;
+				}			
 	
 	
 	/* INDEX */

@@ -20,52 +20,52 @@
 			<!-- -->
 			<div class="div-form-cadastro transition-all">
 			
-                            <h3 class="titulo-box">Cadastro</h3>
-  
-                             <!-- -->
-                            <div class="form-box div-complete-facebook">
-                                <span class="facebook-complete"> facebook.com/ </span>  <?= $this->formRow($form->get('facebook_dados')); ?>
-                                
-                                <div class="img-facebook"> </div>
-                            </div>
-                      
-                            <?= $this->formRow($form->get('id_facebook')); ?>
-                            <?= $this->formRow($form->get('foto_facebook')); ?>
-                        
-                            <!-- -->
-                            <div class="form-box">
-                                   <?= $this->formRow($form->get('nome_cadastro')); ?>
-                            </div>
+                <h3 class="titulo-box">Cadastro</h3>
 
-                            <!-- -->
-                            <div class="form-box">
-                                    <?= $this->formRow($form->get('email')); ?>					
-                            </div>
+                 <!-- -->
+                <div class="form-box div-complete-facebook">
+                	<label class="facebook-complete">facebook.com/</label> 
+                    <?= $this->formRow($form->get('facebook_dados')); ?>
+                    <div class="img-facebook"></div>
+                </div>
+          
+                <?= $this->formRow($form->get('id_facebook')); ?>
+                <?= $this->formRow($form->get('foto_facebook')); ?>
+            
+                <!-- -->
+                <div class="form-box">
+					<?= $this->formRow($form->get('nome_cadastro')); ?>
+                </div>
 
-                            <!-- -->
-                            <div class="form-box">
-                                    <?= $this->formRow($form->get('novo_usuario_senha')); ?>					
-                            </div>
+                <!-- -->
+                <div class="form-box">
+					<?= $this->formRow($form->get('email')); ?>					
+                </div>
 
-                            <!-- -->
-                            <div class="form-box">
-                                    <?= $this->formRow($form->get('novo_usuario_senha_confirmar')); ?>	
-                            </div>
-                            
-                            <!-- -->
-                            <div class="form-box">
-                                    <?= $this->formRow($form->get('data_nascimento')); ?>	
-                            </div>
+                <!-- -->
+                <div class="form-box">
+					<?= $this->formRow($form->get('novo_usuario_senha')); ?>					
+                </div>
 
-                            <!-- -->
-                            <div class="form-box">
-                                    <?= $this->formSelect($form->get('genero')); ?>	
-                            </div>
+                <!-- -->
+                <div class="form-box">
+					<?= $this->formRow($form->get('novo_usuario_senha_confirmar')); ?>	
+                </div>
+                
+                <!-- -->
+                <div class="form-box">
+					<?= $this->formRow($form->get('data_nascimento')); ?>	
+                </div>
 
-                            <!-- -->
-                            <div class="form-box text-align-right">
-                                    <?= $this->formSubmit($form->get('cadastrar')); ?>	
-                            </div>
+                <!-- -->
+                <div class="form-box">
+					<?= $this->formSelect($form->get('genero')); ?>	
+                </div>
+
+                <!-- -->
+                <div class="form-box text-align-right">
+					<?= $this->formSubmit($form->get('cadastrar')); ?>	
+                </div>
 
 			</div>
 		
@@ -76,21 +76,20 @@
 		
 			<h3 class="titulo-box">Autenticação</h3>
 			
-				<!-- -->
-				<div class="form-box">
-					<?= $this->formRow($form->get('login')); ?>		
-				</div>
-				
-				<!-- -->
-				<div class="form-box">
-					<?= $this->formRow($form->get('senha')); ?>			
-				</div>
-                                    
-				<!-- -->
-				<div class="form-box text-align-right">
-                                    <?= $this->formSubmit($form->get('logar')); ?>
-				</div>
-		
+			<!-- -->
+			<div class="form-box">
+				<?= $this->formRow($form->get('login')); ?>		
+			</div>
+			
+			<!-- -->
+			<div class="form-box">
+				<?= $this->formRow($form->get('senha')); ?>			
+			</div>
+                                
+			<!-- -->
+			<div class="form-box text-align-right">
+				<?= $this->formSubmit($form->get('logar')); ?>
+			</div>		
 		
 		</div>
 	
