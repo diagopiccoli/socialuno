@@ -49,19 +49,16 @@ class LoginController extends ActionController
 
                 $return = [
                     'result' => false,
-                    'type' => 'emailTrue'
+                    'type' => $cond['tipo']
                 ];
             }
         }
 
         if($return['result']){
-
             $values = ['login' => $values['login'], 'senha' => $values['senha']];
 
-            $usuarioLogin = $this->getService('SocialUno\Service\Usuario')->login($values);
-
-            $session = $this->getServiceLocator()->get('Session');
-            $session->offsetSet('user', $usuarioLogin);
+            $this->setUsuarioSession($this->getService('SocialUno\Service\Usuario')->login($values));
+ 
         }
 
         $this->response->setContent(json_encode($return));
@@ -81,14 +78,20 @@ class LoginController extends ActionController
                 
             } else {
 
-                $session = $this->getServiceLocator()->get('Session');
-                $session->offsetSet('user', $usuarioLogin);
-
+                $this->setUsuarioSession($usuarioLogin);
+          
             }
             
             $this->response->setContent(json_encode($retorno));
             return $this->response;
         }
+    }
+    
+    private function setUsuarioSession($usuarioLogin)
+    {
+         $session = $this->getServiceLocator()->get('Session');
+         $session->offsetSet('user', $usuarioLogin);
+         $session->fotoPerfil = $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($usuarioLogin->getId());
     }
 
 }

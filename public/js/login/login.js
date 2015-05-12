@@ -116,6 +116,11 @@ function cadastrar(obj)
                         respostaError('#email', 'Esse e-mail já foi cadastrado');
                         return;
                     }
+                    
+                    if (data.type == 'facebook') {
+                        respostaError('#facebook_dados', 'Esse usuario já esta vinculado a um facebook');
+                        return;
+                    }
                 }
                 
                 window.location.href = '/social-uno/index/index';

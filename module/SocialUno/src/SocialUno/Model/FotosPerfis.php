@@ -19,9 +19,9 @@ class FotosPerfis
 
     /**
      * @ORM\ManyToOne(targetEntity="Usuario")
-     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id", onDelete="CASCADE") 
+     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id") 
      *
-     * @var \SocialUno\Model\Usuario
+     * @var \SocialUno\Model\Usuario    
      */
     protected $usuario;
 

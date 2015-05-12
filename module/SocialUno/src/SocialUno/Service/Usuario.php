@@ -23,6 +23,19 @@ class Usuario extends Service
         return $result;
         
     }
+    
+    public function findFotoPerfil($id_usuario)
+    {
+        $result = $this->getObjectManager()
+                    ->getRepository('\SocialUno\Model\FotosPerfis')
+                        ->findOneBy(
+                           array(
+                               'usuario' => $id_usuario
+                           )
+                        );
+        
+       return $result->getCaminho();
+    }
 
     public function createUser(array $values)
     {
@@ -33,12 +46,17 @@ class Usuario extends Service
         }
         
         if($this->getObjectManager()->getRepository('SocialUno\Model\Usuario')->findBy(array('email' => $values['login']))){
-            return ['valido' => false, 'tipo' => 'email'];
+            return ['valido' => false, 'tipo' => 'emailTrue'];
         }
-
-        //var_dump($values); exit;
         
-        $newUsuario = $this->getObjectManager()->persist($this->setUsuario($values)); 
+        if($this->getObjectManager()->getRepository('SocialUno\Model\Usuario')->findBy(array('facebook_id' => $values['id_facebook']))){
+             return ['valido' => false, 'tipo' => 'facebook'];
+        }
+        
+        $newUsuario = $this->setUsuario($values); 
+        
+        $this->getObjectManager()->persist($newUsuario);
+     
         $this->getObjectManager()->persist($this->setFotoPerfil($values['foto_facebook'], $newUsuario));
         
         try {
@@ -55,7 +73,7 @@ class Usuario extends Service
         if($foto == ''){
             $foto = '/images/sem_foto.jpg';
         }
-
+        
         $fotoPerfil = new FotosPerfis();
         $fotoPerfil->setUsuario($newUsuario);
         $fotoPerfil->setCaminho($foto);
@@ -76,6 +94,7 @@ class Usuario extends Service
         $usuario->setNome_exibicao($values['nome']);
         $usuario->setData_cadastro(new \DateTime('now'));
         $usuario->setSenha(md5($values['senha']));
+        $usuario->setStatus("on");
         $dataNascimento = new \DateTime($this->dateToBanco($values['data_nascimento']));
         $usuario->setData_nascimento($dataNascimento);
         $usuario->setSexo($values['genero']);
