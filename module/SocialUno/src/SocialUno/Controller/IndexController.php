@@ -12,10 +12,7 @@ class IndexController extends ActionController
 {
     public function indexAction()
     {
-
         $session = $this->getServiceLocator()->get('Session');
-        
-        //  $session->offsetUnset('user');
            
         if (!$session->offsetGet('user'))
             return $this->redirect()->toUrl('/social-uno/login/index');                        
@@ -36,5 +33,15 @@ class IndexController extends ActionController
         return new ViewModel(
                 ['fotoPerfil' => $session->fotoPerfil]
         );
+    }
+    
+    public function logoutAction()
+    {
+        $session = $this->getServiceLocator()->get('Session');
+        $session->offsetUnset('user');
+        
+        $result = array('login' => 'ok');
+        $this->response->setContent(json_encode($result));
+        return $this->response;
     }
 }
