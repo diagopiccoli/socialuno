@@ -28,14 +28,13 @@ function ajaxBuscaUsuarios()
     $('#find_friends').keyup(function () {
 
         value = this.value;
+        clearTimeout(timer);
         if ($.trim(value) == '') {
             closeDivBusca();
             return;
         }
         
-        clearTimeout(timer);
-        
-        $('.div-colum-destaque').append('<i class="fa fa-refresh fa-spin fa-lg icon-busca"></i>');
+        $('.icon-busca').html('<i class="fa fa-refresh fa-spin fa-lg"></i>');
 
         data = {
             'busca': value
@@ -52,7 +51,7 @@ function ajaxBuscaUsuarios()
 
                         $('.resposta-busca-usuarios').removeClass('hide');
                         $('.resposta-busca-usuarios').html(data);
-                        $('.icon-busca').remove();
+                        $('.icon-busca').html('');
                         
                     }
                //'json' // tipo dos dados q ira retornar, nesse caso ira esperar "json"
@@ -69,4 +68,5 @@ function closeDivBusca()
 {
     $('.resposta-busca-usuarios').addClass('hide');
     $('.resposta-busca-usuarios').html('');
+    $('.icon-busca').html('');
 }
