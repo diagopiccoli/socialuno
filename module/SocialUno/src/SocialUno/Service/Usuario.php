@@ -117,4 +117,9 @@ class Usuario extends Service
       
     }
     
+    public function findUser($id_user)
+    {
+        return $this->getObjectManager()->getRepository('\SocialUno\Model\Usuario')->findBy(array('id' => $id_user))[0];
+    }
+    
 }

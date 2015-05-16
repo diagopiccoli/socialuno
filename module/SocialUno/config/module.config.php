@@ -84,7 +84,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'SocialUno\Controller\Login' => 'SocialUno\Controller\LoginController',
-            'SocialUno\Controller\Index' => 'SocialUno\Controller\IndexController'
+            'SocialUno\Controller\Index' => 'SocialUno\Controller\IndexController',
+            'SocialUno\Controller\FriendProfile' => 'SocialUno\Controller\FriendProfileController'
         ),
     ),
     'view_manager' => array(

@@ -3,12 +3,19 @@
     foreach($usuarios as $list){ ?>
         
     <div class="usuarios-busca" id="usuario_<?=$list['id']?>"> 
-            
-            <?= $list['nome_exibicao'] ?>
+        
+        <!--aumentar de acordo com o tamanho--> 
+        <span>  <?= strlen($list['nome_exibicao']) < 13 ? $list['nome_exibicao'] : substr($list['nome_exibicao'], 0, 12).'..' ?> </span>
     
-                <img src="<?=$list['caminho']?>">
+        
+        <div class="img-facebook">  <img src="<?=$list['caminho']?>" width="50" height="50"> </div>
             
     </div>
-        
-<?php    }
 
+    <?php } ?>
+
+<script>
+    redirectToProfileUser();
+</script>
+
+      

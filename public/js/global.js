@@ -70,3 +70,16 @@ function closeDivBusca()
     $('.resposta-busca-usuarios').html('');
     $('.icon-busca').html('');
 }
+
+function redirectToProfileUser()
+{
+    $('.usuarios-busca').click(function(){
+        
+        var id_user = $(this).attr('id').split('_')[1];
+        console.log(id_user);
+        
+        window.location.href = '/social-uno/friend-profile/index?user='+id_user;
+        
+    });
+    
+}
