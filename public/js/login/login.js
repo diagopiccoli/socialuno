@@ -6,43 +6,38 @@ $('.div-form-login > div > input').keypress(function (event) {
 });
 
 $('#facebook_dados').blur(function () {
-    $(this).css('border', '');
-    if ($.trim($(this).val()) == '') {
-        $(this).css('border', '1px solid red');
-        return;
-    }
+    $.getJSON("//graph.facebook.com/" + $(this).val() + "?fields=name,username,picture,gender", function (dados) {
 
-    $.getJSON("//graph.facebook.com/"+$(this).val()+"?fields=name,username,picture,gender", function (dados) {
-
-        if(dados.error){
+        if (dados.error) {
             return;
         }
 
         $('#id_facebook').val(dados.id);
-        $('#foto_facebook').val('https://graph.facebook.com/'+dados.id+'/picture?type=large')
+        $('#foto_facebook').val('https://graph.facebook.com/' + dados.id + '/picture?type=large')
         $('#nome_cadastro').val(dados.name);
-            if(dados.gender == 'male'){
+        if (dados.gender == 'male') {
             $('#genero').val('M');
-        }else{
-             $('#genero').val('F');
-        }   
-        
-       $('.img-facebook').html('<img src="'+dados.picture.data.url+'">');   
-       
+        } else {
+            $('#genero').val('F');
+        }
+
+        $('.img-facebook').html('<img src="' + dados.picture.data.url + '">');
+
     });
 
-}).keyup(function (){
+}).keyup(function () {
     $('#id_facebook').val('');
     $('#foto_facebook').val('');
     $('.img-facebook > img').attr('src', '');
 });
-    
+
 
 $('.div-form-cadastro > div > input ').blur(function () {
     $(this).removeAttr('style');
 
-    if ($.trim($(this).val()) == '') {
-
+    if ($.trim($(this).val()) == '' && $(this).attr('id') != 'facebook_dados') {
+        
+        $(this).focus();
         $(this).css('border', '1px solid #ff0000');
         return;
     }
@@ -81,7 +76,7 @@ function cadastrar(obj)
         'nome': $('#nome_cadastro').val(),
         'data_nascimento': $('#data_nascimento').val(),
         'genero': $('#genero').val(),
-        'id_facebook' : $('#id_facebook').val(),
+        'id_facebook': $('#id_facebook').val(),
         'foto_facebook': $('#foto_facebook').val()
     };
 
@@ -119,13 +114,13 @@ function cadastrar(obj)
                         respostaError('#email', 'Esse e-mail já foi cadastrado');
                         return;
                     }
-                    
+
                     if (data.type == 'facebook') {
                         respostaError('#facebook_dados', 'Esse usuario já esta vinculado a um facebook');
                         return;
                     }
                 }
-                
+
                 window.location.href = '/social-uno/index/index';
                 return;
 
@@ -173,6 +168,6 @@ function logar(obj)
 
             },
             'json' // tipo dos dados q ira retornar, nesse caso ira esperar "json"
-    );
+            );
 }
 
