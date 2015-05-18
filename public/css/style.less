@@ -81,7 +81,7 @@ body {
 				}
 		.navbar-options {
 			position: absolute;
-			top: 0;
+			top: 5px;
 			right: 0;
 			height: 45px;
 		}
@@ -92,8 +92,8 @@ body {
 			}
 				.navbar-options > ul > li > a {
 					top: 5px;
-					width: 35px;
-					height: 35px;
+					width: 25px;
+					height: 25px;
 					border: 1px solid darken(@corPrincipal, 10%);
 					background: darken(@corPrincipal, 5%);
 					position: relative;
@@ -109,24 +109,24 @@ body {
 						.setTextShadow(1px 1px 1px @cinzaFonte);
 					}
 					.navbar-options > ul > li > a > span.fa-user-plus {
-						top: 8px;
-						left: 7px;
-						font-size: 18px;
+						top: 6px;
+						left: 6px;
+						font-size: 12px;
 					}
 					.navbar-options > ul > li > a > span.fa-bell-o {
-						top: 7px;
-						left: 7px;
-						font-size: 19px;
+						top: 5px;
+						left: 5px;
+						font-size: 13px;
 					}
 					.navbar-options > ul > li > a > span.fa-cog {
-						top: 7px;
-						left: 8.5px;
-						font-size: 20px;
+						top: 4.5px;
+						left: 6.5px;
+						font-size: 14px;
 					}
 					.navbar-options > ul > li > a > span.fa-power-off {
-						top: 7px;
-						left: 8px;
-						font-size: 20px;
+						top: 5px;
+						left: 6px;
+						font-size: 14px;
 					}
 
 .div-total-meio {
@@ -165,17 +165,26 @@ body {
 					float: left;
 					width: 590px;
 				}
-				.div-complete-facebook > .img-facebook {
+				.div-complete-facebook > .img-facebook,
+				.usuarios-busca > a > .img-facebook {
 					width: 50px;
 					height: 50px;
 					position: absolute;
-					top: -20px;
-					right: 0;
 					overflow: hidden;
-					.setBoxShadow(1px 1px 5px @cinzaFonte);
 					.setBorderRadius(all, 50%);
 				}
-					.div-complete-facebook > .img-facebook > img {
+				.div-complete-facebook > .img-facebook {
+					top: -20px;
+					right: 0;
+					.setBoxShadow(1px 1px 5px @cinzaFonte);
+				}
+				.usuarios-busca > a > .img-facebook {
+					top: 5px;
+					right: 5px;
+					border: 1px solid darken(@cinzaBorda, 5%);
+				}
+					.div-complete-facebook > .img-facebook > img,
+					.usuarios-busca > a > .img-facebook > img {
 						max-width: 50px;
 						max-height: 50px;
 					}
@@ -280,7 +289,99 @@ body {
 		width: 235px;
 		float: left;
 		height: 300px;
+		position: relative;
 	}
+		.resposta-busca-usuarios {
+			padding: 0;
+		    width: 430px;
+		    max-height: auto;
+		    background: @branco;
+		    border: 0;
+		    position: absolute;
+		    overflow: visible;
+		    top: 60px;
+		    right: 15px;
+		    z-index: 10;
+		    .setBorderRadius(all, 5px);
+		}
+		.resposta-busca-usuarios:after {
+	    	content: "";			    
+		    border-bottom: 13px solid darken(@cinzaBorda, 5%);
+		    border-left: 10px solid rgba(0,0,0,0);
+		    border-right: 10px solid rgba(0,0,0,0);
+			position: absolute;			
+			top: -12px;
+			right: 5px;
+			z-index: 100;			
+	    }
+			.icon-busca {
+			    position: absolute;
+			    top: 20px;
+			    right: 25px;
+			    background: @branco;
+			}
+				.icon-busca > i {
+					font-size: 15px;
+				}
+				
+			.resposta-busca-usuarios > .resposta-html {
+				width: 100%;
+				max-height: 280px;
+				overflow: auto;
+				border: 1px solid @cinzaBorda;
+				.setBorderRadius(all, 5px);
+				.setBoxShadow(5px 5px 10px darken(@cinzaBorda, 5%));
+			}
+		
+				.resposta-busca-usuarios > .resposta-html > .usuarios-busca {
+					padding: 5px;
+					width: 100%;
+					height: 65px;
+					border-bottom: 1px solid darken(@cinzaFundo, 3%);
+					position: relative;
+					background: @branco;
+					z-index: 10;
+					display: inline-block;
+					&:hover {
+						background: darken(@cinzaFundo, 3%);
+					}
+				}
+					.resposta-busca-usuarios > .resposta-html > .usuarios-busca > a {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+				.resposta-busca-usuarios > .resposta-html > .usuarios-busca.erro {
+					border: 0;
+					&:hover {
+						border: 0;
+						background: @branco;
+					}
+				}
+					.resposta-busca-usuarios > .resposta-html > .usuarios-busca.erro > a {
+						cursor: default;
+					}
+						.resposta-busca-usuarios > .resposta-html > .usuarios-busca > a > .nome-usuario,
+						.resposta-busca-usuarios > .resposta-html > .usuarios-busca > a > .erro-usuario {
+							padding: 0 0 0 5px;
+							margin: 10px 0 0 0;
+							font-size: 20px;
+							line-height: 1;
+							color: @cinzaFonte;
+							text-align: left;
+							display: inline-block;
+							text-overflow: ellipsis;
+							width: 360px;
+							float: left;
+							white-space: nowrap;
+							overflow: hidden;
+						}
+						.resposta-busca-usuarios > .resposta-html > .usuarios-busca > a > .erro-usuario {
+							font-size: 15px;
+							width: 100%;
+						}
 
 .div-total-rodape {
 	margin: 10px 0 0 0;
@@ -288,13 +389,6 @@ body {
 	position: relative;
 	left: 0;
 	bottom: 0;
-}
-@media only screen and (max-height: 500px) {
-	.div-total-rodape {
-		position: absolute;
-		left: 0;
-		bottom: 0;
-	}	
 }
 	.footerbar-desc {
 		text-align: left;

@@ -17,11 +17,12 @@ class FriendProfileController extends ActionController
         $dadosUsuario = $this->getService('SocialUno\Service\Usuario')->findUser($_GET['user']);
         
         $fotoUsuario = $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($dadosUsuario->getId());
-        
-        echo'<pre>';  var_dump($dadosUsuario, $fotoUsuario); exit;
-        
+                
         return new ViewModel(
-             
+             [
+             	'fotoUsuario' => $fotoUsuario,
+			 	'dadosUsuario' => $dadosUsuario
+			 ]
         );
     }
     

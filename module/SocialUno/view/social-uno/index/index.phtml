@@ -98,9 +98,11 @@
 	<!-- -->
 	<div class="div-colum-destaque div-box transition-all">
 	
-            <input type="text" id="find_friends" placeholder="Busque por usuários">
-            <div class="icon-busca"></div>
-            <div class="resposta-busca-usuarios hide"></div>
+		<input type="text" id="find_friends" placeholder="Busque por usuários" data-callback="ajaxBuscaUsuarios('#find_friends')" data-icon="#icon-busca-usuarios" data-resposta="#resposta-busca-usuarios" data-ajax>
+		<div id="icon-busca-usuarios" class="icon-busca"></div>
+		<div id="resposta-busca-usuarios" class="resposta-busca-usuarios div-box hide">
+			<div class="resposta-html"></div>
+		</div>
             
 	</div>
 
