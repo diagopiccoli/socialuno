@@ -1,21 +1,21 @@
 <?php
-    
-    foreach($usuarios as $list){ ?>
-        
-    <div class="usuarios-busca" id="usuario_<?=$list['id']?>"> 
-        
-        <!--aumentar de acordo com o tamanho--> 
-        <span>  <?= strlen($list['nome_exibicao']) < 13 ? $list['nome_exibicao'] : substr($list['nome_exibicao'], 0, 12).'..' ?> </span>
-    
-        
-        <div class="img-facebook">  <img src="<?=$list['caminho']?>" width="50" height="50"> </div>
-            
-    </div>
-
-    <?php } ?>
-
-<script>
-    redirectToProfileUser();
-</script>
-
-      
+	
+	$quantidade = count($usuarios);
+	foreach($usuarios as $list) {
+		?>
+			<div class="usuarios-busca" id="usuario_<?=$list['id']?>"> 
+				<a href="/social-uno/friend-profile/index?user=<?=$list['id']?>">
+					<div class="nome-usuario"><?=$list['nome_exibicao']?></div>        
+					<div class="img-facebook"><img src="<?=$list['caminho']?>"></div>
+				</a>
+			</div>
+		<?php 
+	}
+	if($quantidade == 0) {
+		?>
+			<div class="usuarios-busca erro"> 
+				<div class="erro-usuario">Nenhum resultado encontrado.</div>        
+			</div>
+		<?php 
+	}	
+?>
