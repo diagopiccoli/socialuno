@@ -6,7 +6,7 @@ $('.div-form-login > div > input').keypress(function (event) {
 });
 
 $('#facebook_dados').blur(function () {
-    $.getJSON("//graph.facebook.com/" + $(this).val() + "?fields=name,username,picture,gender", function (dados) {
+    $.getJSON("//graph.facebook.com/" + $(this).val() + "?fields=id,name,picture", function (dados) {
 
         if (dados.error) {
             return;
@@ -15,11 +15,6 @@ $('#facebook_dados').blur(function () {
         $('#id_facebook').val(dados.id);
         $('#foto_facebook').val('https://graph.facebook.com/' + dados.id + '/picture?type=large')
         $('#nome_cadastro').val(dados.name);
-        if (dados.gender == 'male') {
-            $('#genero').val('M');
-        } else {
-            $('#genero').val('F');
-        }
 
         $('.img-facebook').html('<img src="' + dados.picture.data.url + '">');
 
