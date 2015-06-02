@@ -1,3 +1,8 @@
+<?php
+	header("Content-type: text/css; charset: UTF-8");
+	$corPrincipal = '#45ADA8';
+	//$corPrincipal = $_REQUEST['corPrincipal'];
+?>
 /*
 	
 	CORES LESS
@@ -14,4 +19,4 @@
 @cinzaBorda: #cccccc;
 @cinzaFundo: #eeeeee;
 
-@corPrincipal: #006d8c;
+@corPrincipal: <?=$corPrincipal?>;

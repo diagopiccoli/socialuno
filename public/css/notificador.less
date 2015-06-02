@@ -1,0 +1,61 @@
+/*
+	
+	NOTIFICADOR LESS
+	
+*/
+
+.div-notificador {
+	padding: 0;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+}
+	.div-notificador > .div-descricao {
+		width: 200px;
+		height: 200px;
+		position: absolute;
+		bottom: 100px;
+		right: 0;	
+	}
+		.div-notificador > .div-descricao > .div-conteudo {
+			padding: 20px;
+			position: absolute;
+			width: 120px;
+			height: 120px;
+			right: 55px;
+			bottom: 0;
+			overflow: hidden;
+			text-align: center;
+			font-size: 14px;
+			line-height: 1.5;
+			.setBorderRadius(all, 50%);
+		}
+		.div-notificador > .div-descricao > .div-balao {
+			padding: 0 !important;
+			content: "";
+			position: absolute;
+			background: @branco;
+			.setBorderRadius(all, 50%);
+			.setTextShadow(1px 1px 1px @cinzaFonte);
+		}
+		.div-notificador > .div-descricao > .div-balao.grande {
+			right: 80px;
+			bottom: -35px;
+			width: 30px;
+			height: 30px;
+		}
+		.div-notificador > .div-descricao > .div-balao.pequeno {
+			right: 70px;
+			bottom: -50px;
+			width: 15px;
+			height: 15px;
+		}
+	
+	.div-notificador > .div-img {
+		padding: 0;
+		position: absolute;
+		right: 15px;
+		bottom: 15px;
+		overflow: hidden;
+		.setBorderRadius(all, 50%);
+	}
