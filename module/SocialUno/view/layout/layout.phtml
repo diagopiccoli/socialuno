@@ -42,7 +42,7 @@
 					</div>
 					<div class="navbar-options">
 						<ul>
-							<li><a href="javascript:logout()"><span class="fa fa-power-off"></span></a></li>
+							<?= $this->session()->offsetGet('user') ? '<li><a href="javascript:logout()"><span class="fa fa-power-off"></span></a></li>'  : ''?>
 						</ul>
 					</div>
 				</div>

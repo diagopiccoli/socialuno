@@ -104,6 +104,11 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
+    'view_helpers' => array(
+        'invokables' => array(
+            'session' => 'SocialUno\View\Helper\Session'
+        )
+    ),
     // Placeholder for console routes
     'console' => array(
         'router' => array(
