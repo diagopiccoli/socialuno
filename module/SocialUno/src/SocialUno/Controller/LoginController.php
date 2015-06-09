@@ -57,7 +57,7 @@ class LoginController extends ActionController
                     'type' => $cond['tipo']
                 ];
             }
-        }
+        }	
 
         if($return['result']) {
             $values = ['login' => $values['login'], 'senha' => $values['senha']];
