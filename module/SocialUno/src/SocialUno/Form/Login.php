@@ -45,6 +45,15 @@ class Login extends Form
                 'id' => 'nome_cadastro'
             ),
         ));
+        
+        $this->add(array(
+            'name' => 'sobrenome_cadastro',
+            'type' => 'Text',
+            'attributes' => array(
+                'placeholder' => 'Sobrenome:',
+                'id' => 'sobrenome_cadastro'
+            ),
+        ));
 
         $this->add(array(
             'name' => 'email',
@@ -52,6 +61,16 @@ class Login extends Form
             'attributes' => array(
                 'id' => 'email',
                 'placeholder' => 'E-mail:',
+            ),
+        ));
+        
+        $this->add(array(
+            'name' => 'celular',
+            'type' => 'Text',
+            'attributes' => array(
+                'id' => 'celular',
+                'placeholder' => 'Celular:',
+                'data-mask' => '99+ (99) 999999999'
             ),
         ));
 

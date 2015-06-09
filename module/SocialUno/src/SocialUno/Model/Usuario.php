@@ -34,6 +34,12 @@ class Usuario
      * @var string
      */
     protected $email;
+    
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    protected $celular;
 
     /**
      * @ORM\Column(type="string", columnDefinition="ENUM('on', 'off')") 
@@ -52,6 +58,12 @@ class Usuario
      * @var string
      */
     protected $nome;
+    
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    protected $sobrenome;
 
     /**
      * @ORM\Column(type="string", nullable=false)
@@ -90,6 +102,11 @@ class Usuario
     {
         return $this->email;
     }
+    
+    function getCelular()
+    {
+	    return $this->celular;
+    }
 
     function getStatus()
     {
@@ -104,6 +121,11 @@ class Usuario
     function getNome()
     {
         return $this->nome;
+    }
+    
+    function getSobrenome()
+    {
+	    return $this->sobrenome;
     }
 
     function getNome_exibicao()
@@ -135,6 +157,11 @@ class Usuario
     {
         $this->email = $email;
     }
+    
+    function setCelular($celular)
+    {
+        $this->celular = $celular;
+    }
 
     function setStatus($status)
     {
@@ -149,6 +176,11 @@ class Usuario
     function setNome($nome)
     {
         $this->nome = $nome;
+    }
+    
+    function setSobrenome($sobrenome)
+    {
+        $this->sobrenome = $sobrenome;
     }
 
     function setNome_exibicao($nome_exibicao)

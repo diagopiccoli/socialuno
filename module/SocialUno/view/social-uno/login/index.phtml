@@ -21,8 +21,8 @@
 			<div class="div-form-cadastro transition-all">
 			
                 <h3 class="titulo-box">Cadastro</h3>
-
-                 <!-- -->
+				
+                <!-- -->
                 <div class="form-box div-complete-facebook">
                 	<label class="facebook-complete">facebook.com/</label> 
                     <?= $this->formRow($form->get('facebook_dados')); ?>
@@ -33,32 +33,42 @@
                 <?= $this->formRow($form->get('foto_facebook')); ?>
             
                 <!-- -->
-                <div class="form-box">
+                <div class="form-box width-50 zerar-padding-left">
 					<?= $this->formRow($form->get('nome_cadastro')); ?>
                 </div>
-
+                
                 <!-- -->
-                <div class="form-box">
-					<?= $this->formRow($form->get('email')); ?>					
+                <div class="form-box width-50 zerar-padding-right">
+					<?= $this->formRow($form->get('sobrenome_cadastro')); ?>
                 </div>
 
                 <!-- -->
-                <div class="form-box">
+                <div class="form-box width-50 zerar-padding-left">
+					<?= $this->formRow($form->get('email')); ?>					
+                </div>
+                
+                <!-- -->
+                <div class="form-box width-50 zerar-padding-right">
+					<?= $this->formRow($form->get('celular')); ?>					
+                </div>
+
+                <!-- -->
+                <div class="form-box width-50 zerar-padding-left">
 					<?= $this->formRow($form->get('novo_usuario_senha')); ?>					
                 </div>
 
                 <!-- -->
-                <div class="form-box">
+                <div class="form-box width-50 zerar-padding-right">
 					<?= $this->formRow($form->get('novo_usuario_senha_confirmar')); ?>	
                 </div>
                 
                 <!-- -->
-                <div class="form-box">
+                <div class="form-box width-50 zerar-padding-left">
 					<?= $this->formRow($form->get('data_nascimento')); ?>	
                 </div>
 
                 <!-- -->
-                <div class="form-box">
+                <div class="form-box width-50 zerar-padding-right">
 					<?= $this->formSelect($form->get('genero')); ?>	
                 </div>
 
@@ -98,7 +108,7 @@
 </div>
 
 <?php 
-    echo $this->headScript()  
-       ->prependFile($this->basePath() . '/js/login/login.js');
-            
+echo $this->headScript()  
+   ->prependFile($this->basePath() . '/js/login/login.js');
+        
 ?>

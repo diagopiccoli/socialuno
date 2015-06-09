@@ -25,7 +25,7 @@ class LoginController extends ActionController
     {
         $return = array('result' => true);
 
-        $values = $this->getRequest()->getPost()['data'];
+        $values = $this->getRequest()->getPost()['data'];		
 
         if (!$this->getService('SocialUno\Service\Validar')->validaSenha($values['senha'])) {
             $return = [
@@ -40,6 +40,13 @@ class LoginController extends ActionController
                 'type' => 'email'
             ];
         }
+        
+		if (!$this->getService('SocialUno\Service\Validar')->validaDataNascimento($values['data_nascimento'])) {
+		    $return = [
+		        'result' => false,
+		        'type' => 'data_nascimento'
+		    ];
+		}
 
         if ($return['result']) {
             $cond = $this->getService('SocialUno\Service\Usuario')->createUser($values);
@@ -52,7 +59,7 @@ class LoginController extends ActionController
             }
         }
 
-        if($return['result']){
+        if($return['result']) {
             $values = ['login' => $values['login'], 'senha' => $values['senha']];
 
             $this->setUsuarioSession($this->getService('SocialUno\Service\Usuario')->login($values));

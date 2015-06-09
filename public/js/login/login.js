@@ -14,7 +14,12 @@ $('#facebook_dados').blur(function () {
 
         $('#id_facebook').val(dados.id);
         $('#foto_facebook').val('https://graph.facebook.com/' + dados.id + '/picture?type=large')
-        $('#nome_cadastro').val(dados.name);
+		
+		var name = dados.name;
+		name = name.split(' ');
+       
+        $('#nome_cadastro').val(name[0]);
+        $('#sobrenome_cadastro').val(name[1]);
 
         $('.img-facebook').html('<img src="' + dados.picture.data.url + '">');
 
@@ -67,8 +72,10 @@ function cadastrar(obj)
     dataUrl = $(obj).attr('data-url');
     data = {
         'login': $('#email').val(),
+        'celular': $('#celular').val(),
         'senha': $('#novo_usuario_senha').val(),
         'nome': $('#nome_cadastro').val(),
+        'sobrenome': $('#sobrenome_cadastro').val(),
         'data_nascimento': $('#data_nascimento').val(),
         'genero': $('#genero').val(),
         'id_facebook': $('#id_facebook').val(),
@@ -114,6 +121,12 @@ function cadastrar(obj)
                         respostaError('#facebook_dados', 'Esse usuario já esta vinculado a um facebook');
                         return;
                     }
+                    
+                    if (data.type == 'data_nascimento') {
+	                    respostaError('#data_nascimento', 'Você deve ter no mínimo 16 anos para fazer esses cadastro');
+	                    return;
+                    }
+                    
                 }
 
                 window.location.href = '/social-uno/index/index';

@@ -38,18 +38,18 @@ class Usuario extends Service
     }
 
     public function createUser(array $values)
-    {
+    {    
         foreach($values as $list){
             if($list == ''){
                 return false;
             }
         }
         
-        if($this->getObjectManager()->getRepository('SocialUno\Model\Usuario')->findBy(array('email' => $values['login']))){
+        if($this->getObjectManager()->getRepository('SocialUno\Model\Usuario')->findBy(array('email' => $values['login']))) {
             return ['valido' => false, 'tipo' => 'emailTrue'];
         }
         
-        if($this->getObjectManager()->getRepository('SocialUno\Model\Usuario')->findBy(array('facebook_id' => $values['id_facebook']))){
+        if($this->getObjectManager()->getRepository('SocialUno\Model\Usuario')->findBy(array('facebook_id' => $values['id_facebook']))) {
              return ['valido' => false, 'tipo' => 'facebook'];
         }
         
@@ -90,8 +90,10 @@ class Usuario extends Service
             $usuario->setFacebookId($values['id_facebook']);
         }
         $usuario->setNome($values['nome']);
+        $usuario->setSobrenome($values['sobrenome']);
         $usuario->setEmail($values['login']);
-        $usuario->setNome_exibicao($values['nome']);
+        $usuario->setCelular($values['celular']);
+        $usuario->setNome_exibicao($values['nome'].' '.$values['sobrenome']);
         $usuario->setData_cadastro(new \DateTime('now'));
         $usuario->setSenha(md5($values['senha']));
         $usuario->setStatus("on");
@@ -99,8 +101,7 @@ class Usuario extends Service
         $usuario->setData_nascimento($dataNascimento);
         $usuario->setSexo($values['genero']);
         
-        return $usuario;
-        
+        return $usuario;        
     }
     
     public function findUsuariosByName($values)
@@ -113,8 +114,7 @@ class Usuario extends Service
                 ->where("usu.nome_exibicao LIKE ?1")
                 ->setParameter(1, $values['busca'] . "%");
 
-        return $select->getQuery()->getResult();
-      
+        return $select->getQuery()->getResult();      
     }
     
     public function findUser($id_user)
