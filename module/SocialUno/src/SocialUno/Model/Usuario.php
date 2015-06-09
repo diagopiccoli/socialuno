@@ -83,6 +83,12 @@ class Usuario
      */
     protected $sexo;
 
+    /**
+     * @ORM\Column(type="string") 
+     * @var string
+     */
+    protected $cor_usuario = '#45ada8';
+
     function getId()
     {
         return $this->id;
@@ -143,6 +149,11 @@ class Usuario
         return $this->sexo;
     }
 
+    function getCorUsuario()
+    {
+        return $this->cor_usuario;
+    }
+
     function setFacebookId($facebookId)
     {
         $this->facebook_id = $facebookId;
@@ -196,6 +207,11 @@ class Usuario
     function setSexo($sexo)
     {
         $this->sexo = $sexo;
+    }
+
+    function setCorUsuario($cor_usuario)
+    {
+        $this->cor_usuario = $cor_usuario;
     }
 
 }
