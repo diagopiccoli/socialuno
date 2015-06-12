@@ -39,17 +39,12 @@ class Usuario extends Service
 
     public function createUser(array $values)
     {    
-        foreach($values as $list){
-            if($list == ''){
-                return false;
-            }
-        }
-        
+
         if($this->getObjectManager()->getRepository('SocialUno\Model\Usuario')->findBy(array('email' => $values['login']))) {
             return ['valido' => false, 'tipo' => 'emailTrue'];
         }
         
-        if($this->getObjectManager()->getRepository('SocialUno\Model\Usuario')->findBy(array('facebook_id' => $values['id_facebook']))) {
+        if(isset($values['id_facebook']) && $this->getObjectManager()->getRepository('SocialUno\Model\Usuario')->findBy(array('facebook_id' => $values['id_facebook']))) {
              return ['valido' => false, 'tipo' => 'facebook'];
         }
         
@@ -71,7 +66,7 @@ class Usuario extends Service
     private function setFotoPerfil($foto, $newUsuario)
     {
         if($foto == ''){
-            $foto = '/images/sem_foto.jpg';
+            $foto = '/img/sem_foto.jpg';
         }
         
         $fotoPerfil = new FotosPerfis();

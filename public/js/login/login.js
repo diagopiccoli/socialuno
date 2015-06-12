@@ -37,9 +37,9 @@ $('.div-form-cadastro > div > input ').blur(function () {
 
     if ($.trim($(this).val()) == '' && $(this).attr('id') != 'facebook_dados') {
         
-        $(this).focus();
+     //  $(this).focus();
         $(this).css('border', '1px solid #ff0000');
-        return;
+      //  return;
     }
 
     if ($(this).attr('id') == 'novo_usuario_senha_confirmar') {
@@ -58,7 +58,7 @@ function cadastrar(obj)
 {
     var condicao = false;
     $('.div-form-cadastro > div > input ').each(function () {
-        if ($.trim(this.value) == '' && $(this).attr('id') != 'id_facebook') {
+        if ($.trim(this.value) == '' && $(this).attr('id') != 'id_facebook' && $(this).attr('id') != 'facebook_dados') {
             alert('campos nulos');
             condicao = true;
             return false;

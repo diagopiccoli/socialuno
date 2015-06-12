@@ -18,7 +18,7 @@ class Usuario
     protected $id;
 
     /**
-     * @ORM\Column(type="string",  nullable=false) 
+     * @ORM\Column(type="string", nullable=true) 
      * @var string
      */
     protected $facebook_id;
@@ -66,7 +66,7 @@ class Usuario
     protected $sobrenome;
 
     /**
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="string", nullable=true)
      * @var string
      */
     protected $nome_exibicao;
