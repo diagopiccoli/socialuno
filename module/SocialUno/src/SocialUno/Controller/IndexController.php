@@ -16,19 +16,6 @@ class IndexController extends ActionController
            
         if (!$session->offsetGet('user'))
             return $this->redirect()->toUrl('/social-uno/login/index');                        
-               
-        
-       // $paginator = new Paginator(
-       //             new DoctrinePaginator(
-       //                     new ORMPaginator($query)
-       //             )                
-       //         );
-       
-       // $paginator
-       //          ->setCurrentPageNumber($this->params()->fromRoute('page'))
-       //         ->setItemCountPerPage(1);
-               
-//       var_dump($session->fotoPerfil); exit;
         
         return new ViewModel(
                 ['fotoPerfil' => $session->fotoPerfil]
