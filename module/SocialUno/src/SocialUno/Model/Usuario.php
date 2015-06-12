@@ -84,6 +84,36 @@ class Usuario
     protected $sexo;
 
     /**
+    * @ORM\Column(type="string", nullable=true)
+    * @var string
+    */
+    protected $relacionamento;
+
+    /**
+    * @ORM\Column(type="string", nullable=true)
+    * @var string
+    */
+    protected $profissao;
+
+    /**
+    * @ORM\Column(type="string", nullable=true)
+    * @var string
+    */
+    protected $formacao;
+
+    /**
+    * @ORM\Column(type="string", nullable=true)
+    * @var string
+    */
+    protected $local_trabalho;
+
+    /**
+    * @ORM\Column(type="string", nullable=true)
+    * @var string
+    */
+    protected $endereco;
+
+    /**
      * @ORM\Column(type="string") 
      * @var string
      */
@@ -154,6 +184,30 @@ class Usuario
         return $this->cor_usuario;
     }
 
+    function getRelacionamento()
+    {
+        return $this->relacionamento;
+    }
+
+    function getProfissao()
+    {
+        return $this->profissao;
+    }
+
+    function getFormacao()
+    {
+        return $this->formacao;
+    }
+
+    function getLocalTrabalho()
+    {
+        return $this->local_trabalho;
+    }
+
+    function getEndereco()
+    {
+        return $this->endereco;
+    }
     function setFacebookId($facebookId)
     {
         $this->facebook_id = $facebookId;
@@ -207,6 +261,31 @@ class Usuario
     function setSexo($sexo)
     {
         $this->sexo = $sexo;
+    }
+
+    function setRelacionamento($relacionamento)
+    {
+        $this->relacionamento = $relacionamento;
+    }
+
+    function setProfissao($profissao)
+    {
+        $this->profissao = $profissao;
+    }
+
+    function setFormacao($formacao)
+    {
+        $this->formacao = $formacao;
+    }
+
+    function setLocalTrabalho($local_trabalho)
+    {
+        $this->local_trabalho = $local_trabalho;
+    }
+
+    function setEndereco($endereco)
+    {
+        $this->endereco = $endereco;
     }
 
     function setCorUsuario($cor_usuario)

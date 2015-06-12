@@ -1,0 +1,147 @@
+<!-- -->
+<div class="div-limiter">
+	
+	<!-- -->
+	<div class="div-colum-perfil transition-all">
+	
+		<!-- -->
+		<div class="div-foto-perfil div-box" data-toggle="tooltip" data-placement="bottom" title="Clique para alterar a foto de perfil">
+			<a href="javascript:void(0)" data-toggle="modal" data-target="#modal-foto-perfil">
+				<img src="<?=$fotoPerfil?>">
+			</a>
+		</div>
+		
+		<!-- -->
+		<div class="div-conf-perfil">
+		
+			<ul>
+				<li>
+					<a href="javascript:void(0)">
+						<i class="fa fa-newspaper-o"></i> Publicações
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						<i class="fa fa-comments"></i> Mensagens
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						<i class="fa fa-bullhorn"></i> Notificações
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						<i class="fa fa-comments"></i> Amigos
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						<i class="fa fa-camera"></i> Fotos
+					</a>
+				</li>
+				<li>
+					<a href="/social-uno/configuracoes/index">
+						<i class="fa fa-cog"></i> Configurações
+					</a>
+				</li>
+			</ul>	
+		
+		</div>
+	
+	</div>
+		
+	<!-- -->
+	<div class="div-colum-public">
+		
+		<!-- -->
+		<div class="div-box-ind-public">
+			
+			<!-- -->
+			<div class="div-box-ind-ind-public-configuracoes div-box">
+
+				
+				<div class="div-form-cadastro transition-all">
+			
+                <h3 class="titulo-box">Configurações <?=$usuario->getNome_exibicao()?></h3>
+				
+				<input type="hidden" id="id_user" value="<?=$usuario->getId()?>">
+
+				<!-- -->
+                <div class="form-box width-50 text-align-left">
+                	<label for="nome_usuario">Nome*:</label>
+					<input type="text" id="nome_usuario" value="<?=$usuario->getNome()?>">
+                </div>
+
+                <!-- -->
+                <div class="form-box width-50 text-align-left">
+                	<label for="sobrenome_usuario">Sobrenome*:</label>
+					<input type="text" id="sobrenome_usuario" value="<?=$usuario->getSobrenome()?>">
+                </div>
+
+                 <div class="form-box width-50 text-align-left">
+                	<label for="sexo">Sexo*:</label>
+					<select id="sexo">
+						<option <?=$usuario->getSexo() == 'M' ? 'selected' : ''?> value="M">Masculino</option>
+						<option <?=$usuario->getSexo() == 'F' ? 'selected' : ''?> value="F">Feminino</option>
+					</select>
+                </div>
+
+                 <!-- -->
+                <div class="form-box width-50 text-align-left">
+                	<label for="relacionamento">Status Relacionamento:</label>
+					<input type="text" id="relacionamento" value="<?=$usuario->getRelacionamento()?>">
+                </div>
+
+                <!-- -->
+                <div class="form-box width-50 text-align-left">
+                	<label for="profissao">Profissão:</label>
+					<input type="text" id="profissao" value="<?=$usuario->getProfissao()?>">
+                </div>
+
+                <!-- -->
+                <div class="form-box width-50 text-align-left">
+                	<label for="formacao">Formação:</label>
+					<input type="text" id="formacao" value="<?=$usuario->getFormacao()?>">
+                </div>
+
+                <!-- -->
+                <div class="form-box width-50 text-align-left">
+                	<label for="local_trabalho">Local de Trabalho:</label>
+					<input type="text" id="local_trabalho" value="<?=$usuario->getLocalTrabalho()?>">
+                </div>
+
+                 <!-- -->
+                <div class="form-box width-50 text-align-left">
+                	<label for="endereco">Endereço:</label>
+					<input type="text" id="endereco" value="<?=$usuario->getEndereco()?>">
+                </div>
+				<div class="form-box text-align-right">	
+               		 <button class="btn principal" onclick="saveDadosConfiguracoes()">Salvar</button>
+               	</div>
+			</div>
+
+			</div>
+		</div>
+	
+	</div>
+
+	<!-- -->
+	<div class="div-colum-destaque div-box transition-all">
+	
+		<input type="text" id="find_friends" placeholder="Busque por usuários" data-callback="ajaxBuscaUsuarios('#find_friends')" data-icon="#icon-busca-usuarios" data-resposta="#resposta-busca-usuarios" data-ajax>
+		<div id="icon-busca-usuarios" class="icon-busca"></div>
+		<div id="resposta-busca-usuarios" class="resposta-busca-usuarios div-box hide">
+			<div class="resposta-html"></div>
+		</div>
+            
+	</div>
+	
+
+</div>
+
+<?php 
+echo $this->headScript()  
+   ->prependFile($this->basePath() . '/js/configuracoes/configuracoes.js');
+        
+?>

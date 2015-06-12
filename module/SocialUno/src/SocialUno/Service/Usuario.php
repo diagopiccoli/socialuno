@@ -116,5 +116,32 @@ class Usuario extends Service
     {
         return $this->getObjectManager()->getRepository('\SocialUno\Model\Usuario')->findBy(array('id' => $id_user))[0];
     }
+
+    public function editUser(array $dados)
+    {
+        
+        $usuario = $this->getObjectManager()->find('SocialUno\Model\Usuario', $dados['id']);
+        if(!$usuario){
+            return false;
+        }
+
+        $usuario->setNome($dados['nome_usuario']);
+        $usuario->setSobrenome($dados['sobrenome_usuario']);
+        $usuario->setRelacionamento($dados['relacionamento']);
+        $usuario->SetProfissao($dados['profissao']);
+        $usuario->setFormacao($dados['formacao']);
+        $usuario->setLocalTrabalho($dados['local_trabalho']);
+        $usuario->setEndereco($dados['endereco']);
+        $usuario->setSexo($dados['sexo']);
+
+        $this->getObjectManager()->persist($usuario);
+
+         try {
+            $this->getObjectManager()->flush();
+            return true;
+        } catch (Exception $exc) {
+            return false;
+        }
+    }
     
 }
