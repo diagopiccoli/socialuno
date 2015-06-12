@@ -25,7 +25,12 @@ class IndexController extends ActionController
     public function logoutAction()
     {
         $session = $this->getServiceLocator()->get('Session');
+
+        $this->getService('SocialUno\Service\Usuario')->changeStatus($session->offsetGet('user')->getId(), 'off');
+        
         $session->offsetUnset('user');
+
+
         
         $result = array('login' => 'ok');   
         $this->response->setContent(json_encode($result));

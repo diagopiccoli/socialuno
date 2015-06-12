@@ -143,5 +143,20 @@ class Usuario extends Service
             return false;
         }
     }
+
+    public function changeStatus($id, $onoffswitch)
+    {
+        $usuario = $this->getObjectManager()->find('SocialUno\Model\Usuario', $id);
+
+        $usuario->setStatus($onoffswitch);
+        $this->getObjectManager()->persist($usuario);
+
+         try {
+            $this->getObjectManager()->flush();
+            return true;
+        } catch (Exception $exc) {
+            return false;
+        }
+    }
     
 }

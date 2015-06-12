@@ -97,6 +97,7 @@ class LoginController extends ActionController
          $session = $this->getServiceLocator()->get('Session');
          $session->offsetSet('user', $usuarioLogin);
          $session->fotoPerfil = $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($usuarioLogin->getId());
+         $this->getService('SocialUno\Service\Usuario')->changeStatus($usuarioLogin->getId(), 'on');
     }
 
 }
