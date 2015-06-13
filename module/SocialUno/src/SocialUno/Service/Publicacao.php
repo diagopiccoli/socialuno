@@ -26,7 +26,7 @@ class Publicacao extends Service
 					if(in_array($extencao, $arrayImg)) {
 
 						$uploadfile = 'fotos_usuarios/';
-				//		/public/img/fotos_usuarios/
+				//		/public/img/fotos_usuarios/ n consegui
 					
 						if (!move_uploaded_file($files['tmp_name'][$i], $uploadfile.basename($files['name'][$i]))) {
 								return false;
