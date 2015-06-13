@@ -1,110 +1,44 @@
 <!-- -->
-<div class="div-limiter">
-	
-	<!-- -->
-	<div class="div-colum-perfil transition-all">
-	
-		<!-- -->
-		<div class="div-foto-perfil div-box" data-toggle="tooltip" data-placement="bottom" title="Clique para alterar a foto de perfil">
-			<a href="javascript:void(0)" data-toggle="modal" data-target="#modal-foto-perfil">
-				<img src="<?=$fotoPerfil?>">
-			</a>
-		</div>
-		
-		<!-- -->
-		<div class="div-conf-perfil">
-		
-			<ul>
-				<li>
-					<a href="javascript:void(0)">
-						<i class="fa fa-newspaper-o"></i> Publicações
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						<i class="fa fa-comments"></i> Mensagens
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						<i class="fa fa-bullhorn"></i> Notificações
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						<i class="fa fa-comments"></i> Amigos
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						<i class="fa fa-camera"></i> Fotos
-					</a>
-				</li>
-				<li>
-					<a href="/social-uno/configuracoes/index">
-						<i class="fa fa-cog"></i> Configurações
-					</a>
-				</li>
-			</ul>	
-		
-		</div>
-	
-	</div>
-		
-	<!-- -->
-	<div class="div-colum-public">
-	
-		<!-- -->
-		<div class="div-box-public div-box transition-all">
-		
-			<form id="" class="" name="" action="" method="" enctype="multipart/form-data">
-			
-				<!-- -->
-				<div class="form-box">	
-					<textarea id="" class="form-group" placeholder="Compartilhe algo com os seus amigos..."></textarea>
-				</div>
-				
-				<!-- -->
-				<div class="form-box text-align-right">
-					<button id="" class="btn principal" type="button" data-toggle="tooltip" data-placement="bottom" title="Adicionar fotos"><i class="fa fa-camera"></i></button>
-					<button id="" class="btn principal" type="button" data-toggle="tooltip" data-placement="bottom" title="Adicionar pessoas"><i class="fa fa-user-plus"></i></button>
-					<button id="" class="btn principal" type="button" data-toggle="tooltip" data-placement="bottom" title="Adicionar localização"><i class="fa fa-map-marker"></i></button>
-					<button id="" class="btn principal" type="button">Publicar</button>
-				</div>			
-				
-			</form>
-		
-		</div>
-		
-		<!-- -->
-		<div class="div-box-ind-public">
-			
-			<!-- -->
-			<div class="div-box-ind-ind-public div-box">
-			</div>
+<div class="div-box-public div-box transition-all">
 
-			<!-- -->
-			<div class="div-box-ind-ind-public div-box">
-			</div>
-			
-			<!-- -->
-			<div class="div-box-ind-ind-public div-box">
-			</div>
-						
+	<form id="" class="" name="" action="" method="" enctype="multipart/form-data">
+	
+		<!-- -->
+		<div class="form-box">	
+			<textarea id="" class="form-group" placeholder="Compartilhe algo com os seus amigos..."></textarea>
 		</div>
-	
-	</div>
-	
-	<!-- -->
-	<div class="div-colum-destaque div-box transition-all">
-	
-		<input type="text" id="find_friends" placeholder="Busque por usuários" data-callback="ajaxBuscaUsuarios('#find_friends')" data-icon="#icon-busca-usuarios" data-resposta="#resposta-busca-usuarios" data-ajax>
-		<div id="icon-busca-usuarios" class="icon-busca"></div>
-		<div id="resposta-busca-usuarios" class="resposta-busca-usuarios div-box hide">
-			<div class="resposta-html"></div>
-		</div>
-            
-	</div>
+		
+		<!-- -->
+		<div class="form-box text-align-right">
+			<div class="div-input-select-publicacao" data-toggle="tooltip" data-placement="bottom" title="Quem poderá ver essa publicação?">
+				<select>
+					<option><i class="fa fa-user"></i> Somente eu</option>
+					<option>Amigos</option>
+					<option>Todos</option>
+				</select>
+			</div>
+			<button id="" class="btn principal" type="button" data-toggle="tooltip" data-placement="bottom" title="Adicionar fotos"><i class="fa fa-camera"></i></button>
+			<button id="" class="btn principal" type="button" data-toggle="tooltip" data-placement="bottom" title="Adicionar pessoas"><i class="fa fa-user-plus"></i></button>
+			<button id="" class="btn principal" type="button">Publicar</button>
+		</div>			
+		
+	</form>
 
 </div>
 
+<!-- -->
+<div class="div-box-ind-public">
+	
+	<!-- -->
+	<div class="div-box-ind-ind-public div-box">
+	</div>
+
+	<!-- -->
+	<div class="div-box-ind-ind-public div-box">
+	</div>
+	
+	<!-- -->
+	<div class="div-box-ind-ind-public div-box">
+	</div>
+				
+</div>

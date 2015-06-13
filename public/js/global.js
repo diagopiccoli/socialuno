@@ -20,6 +20,12 @@ function logout()
 	);
 }
 
+function marcaMenu(id)
+{
+	$('#menu-perfil li').removeClass('active');
+	$(id).addClass('active');
+}
+
 /*
 function ajaxBuscaUsuarios()
 {
