@@ -27,15 +27,19 @@ class Validar extends Service
     public function validaDataNascimento($data)
     {
     	$data = explode('/', $data);
+
 		
 		if(checkdate($data[1], $data[0], $data[2])) {
-	    	$data = $data[2].'-'.$data[1].'-'.$data[0];
-	    	$dataPermitida = (((60 * 60) * 24) * 365) * 16;
-	    	$subtracao = strtotime(date('d/m/Y')) - strtotime($data);
-	    
-		    if(($subtracao >= $dataPermitida) && (trim(strtotime($data)) != '')) {
+	       $cond  = date('Y') - $data[2];
+		    if($cond >= 16) {
 			    return true;
 		    }
+            if($cond == 15 && (date('m') > $data[1])){
+                return true;
+            }
+            if($cond == 15 && (date('m') == $data[1]) && date('d') > $data[0]){
+                return true;
+            }
 		}
 	    
 	    return false;
