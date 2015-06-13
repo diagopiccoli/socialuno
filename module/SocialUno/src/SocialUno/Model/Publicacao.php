@@ -18,7 +18,7 @@ class Publicacao
     protected $id;
 
     /**
-     * @ORM\Column(type="text") 
+     * @ORM\Column(type="text", nullable=true) 
      * @var text
      */
     protected $publicacao;
@@ -38,5 +38,42 @@ class Publicacao
      * @var \SocialUno\Model\TipoPublicacao    
      */
     protected $tipo_publicacao;
+
+    function getId()
+    {
+        return $this->id;
+    }
+
+    function getPublicacao()
+    {
+        return $this->publicacao;
+    }
+
+    function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    function getTipoPublicacao()
+    {
+        return $this->tipo_publicacao;
+    }
+
+    function setPublicacao($publicacao)
+    {
+        $this->publicacao = $publicacao;
+    }
+
+    function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
+    function setTipoPublicacao  ($tipo_publicacao)
+    {
+        $this->tipo_publicacao = $tipo_publicacao;
+    }
+
+
 
 }

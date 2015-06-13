@@ -39,4 +39,39 @@ class Album
      */
     protected $data_criacao;
 
+    function getId()
+    {
+        return $this->id;
+    }
+
+    function getTipoAlbum()
+    {
+        return $this->tipo_album;
+    }
+
+    function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    function getDataCriacao()
+    {
+        return $this->data_criacao;
+    }
+
+    function setTipoAlbum($tipo_album)
+    {
+        $this->tipo_album = $tipo_album;
+    }
+
+    function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
+    function setDataCriacao($data_criacao)
+    {
+        $this->data_criacao = $data_criacao;
+    }
+
 }

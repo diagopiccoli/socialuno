@@ -60,7 +60,8 @@ return array(
     'service_manager' => array(
         'invokables' => array(
             'SocialUno\Service\Usuario' => 'SocialUno\Service\Usuario',
-            'SocialUno\Service\Validar' => 'SocialUno\Service\Validar'
+            'SocialUno\Service\Validar' => 'SocialUno\Service\Validar',
+            'SocialUno\Service\Publicacao' => 'SocialUno\Service\Publicacao'
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',

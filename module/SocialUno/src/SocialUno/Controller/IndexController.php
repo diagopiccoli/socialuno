@@ -47,5 +47,18 @@ class IndexController extends ActionController
         
         return $view;
     }
+
+    public function savePublicacaoAction()
+    {
+        $session = $this->getServiceLocator()->get('Session');
+        $result = $this->getService('SocialUno\Service\Publicacao')->adicionarPublicacao($_POST, $_FILES['fotosLinhaTempo'], $session->offsetGet('user')->getId());
+        $this->response->setContent(json_encode(false));
+        if($result){
+             $this->response->setContent(json_encode(true));
+        }
+
+
+        return $this->response;
+    }
     
 }
