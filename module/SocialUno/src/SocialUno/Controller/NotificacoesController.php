@@ -49,6 +49,8 @@ class NotificacoesController extends ActionController
         if($this->getService('SocialUno\Service\Usuario')->aceitarSolicitacao($session->offsetGet('user')->getId(), $_POST['data']))
            $this->response->setContent(json_encode(true));
 
+       
+
         return $this->response; 
     }
     

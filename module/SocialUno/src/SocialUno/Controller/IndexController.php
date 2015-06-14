@@ -38,7 +38,12 @@ class IndexController extends ActionController
        //var_dump($publicacoes); exit;
         $arrAuxPub = [];
         foreach ($publicacoes as $key => $value) {
-                $arrAuxPub[] = ['pub' => $value, 'foto' => $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($value['usuario']['id'])];
+                $arrAuxPub[] = [
+                    'pub' => $value, 
+                    'foto' => $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($value['usuario']['id']),
+                    'curtir' => $this->getService('SocialUno\Service\Publicacao')->buscaCurtidas($value['id'], $session->offsetGet('user')->getId(), 'curtir'),
+                    'nao_curti' => $this->getService('SocialUno\Service\Publicacao')->buscaCurtidas($value['id'], $session->offsetGet('user')->getId(), 'descurtir')
+                ];
         }    
 
         return new ViewModel([
@@ -87,5 +92,45 @@ class IndexController extends ActionController
 
         return $this->response;
     }
+
+    public function curtirPublicacaoAction()
+    {
+
+        $session = $this->getServiceLocator()->get('Session');
+        $result = $this->getService('SocialUno\Service\Publicacao')->curtirPublicacao($_POST['data'], $session->offsetGet('user')->getId(), 'curtir');
+        $this->response->setContent(json_encode(false));
+        if($result){
+             $this->response->setContent(json_encode(true));
+        }
+
+        return $this->response;
+    }
+
+    public function descurtirPublicacaoAction()
+    {
+        $session = $this->getServiceLocator()->get('Session');
+        $result = $this->getService('SocialUno\Service\Publicacao')->descurtirPublicacao($_POST['data'], $session->offsetGet('user')->getId());
+        $this->response->setContent(json_encode(false));
+        if($result){
+             $this->response->setContent(json_encode(true));
+        }
+
+
+        return $this->response;
+    }
+
+    public function naoCurtiPublicacaoAction()
+    {
+
+        $session = $this->getServiceLocator()->get('Session');
+        $result = $this->getService('SocialUno\Service\Publicacao')->curtirPublicacao($_POST['data'], $session->offsetGet('user')->getId(), 'descurtir');
+        $this->response->setContent(json_encode(false));
+        if($result){
+             $this->response->setContent(json_encode(true));
+        }
+
+        return $this->response;
+    }
+
     
 }

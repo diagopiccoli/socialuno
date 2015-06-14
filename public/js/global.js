@@ -26,55 +26,119 @@ function marcaMenu(id)
 	$(id).addClass('active');
 }
 
-/*
-function ajaxBuscaUsuarios()
+function nadaFazer(aux)
 {
-    var timer;
-    
-    $('#find_friends').keyup(function(e) {
-		e.preventDefault();
-		var arrNum = [9, 16, 17, 18, 37, 38, 39, 40, 91];
-	
-		if(arrNum.indexOf(e.keyCode) == -1) {
-		
-	        value = this.value;
-	        clearTimeout(timer);
-	        if($.trim(value) == '') {
-	            closeDivBusca();
-	            return;
-	        }
-	        
-	        $('.icon-busca').html('<i class="fa fa-refresh fa-spin fa-lg"></i>');
-	
-	        data = {
-	            'busca': value
-	        };
-	        
-	        timer = setTimeout(function () {
-	
-	            $.post(
-	                    '/social-uno/index/ajax-busca-usuarios',
-	                    {
-	                        data: data
-	                    },
-	                    function (data, status) {
-							
-	                        $('.resposta-busca-usuarios').removeClass('hide');
-	                        $('.resposta-busca-usuarios').html(data);
-	                        $('.icon-busca').html('');
-	                        
-	                    }
-	               //'json' // tipo dos dados q ira retornar, nesse caso ira esperar "json"
-	            );
-	
-	        }, 1000);
-		
-		}
-
-    });
-
+	alert('Voce nao pode curtir e nao curtir');
 }
-*/
+
+function curtir(id_publicacao)
+{
+	$.post(
+            '/social-uno/index/curtirPublicacao',
+            {
+                data: id_publicacao
+            },
+            function (data, status) {
+            	soma = $.trim($('.qnt-curtidas-'+id_publicacao).html());
+            	if(soma == '')
+            		soma = 0; 
+           		qnt = parseInt(soma) + 1;
+                $('#curtir-'+id_publicacao).removeClass('fa-thumbs-o-up');
+                $('#curtir-'+id_publicacao).addClass('fa-thumbs-up');
+                $('#curtir-'+id_publicacao+' > .texto-curtr').html('Descutir');
+                $('#curtir-'+id_publicacao).removeAttr('onclick');
+                $('#curtir-'+id_publicacao).attr('onclick', 'descurtir('+id_publicacao+')');
+                $('.qnt-curtidas-'+id_publicacao).html(qnt);
+
+                $('#nao-curti-'+id_publicacao).removeAttr('onclick');
+                $('#nao-curti-'+id_publicacao).attr('onclick', 'nadaFazer('+id_publicacao+')');
+
+            }
+        );
+}
+
+function descurtir(id_publicacao)
+{
+	$.post(
+           '/social-uno/index/descurtirPublicacao',
+        {
+            data: id_publicacao
+        },
+        function (data, status) {
+            soma = $.trim($('.qnt-curtidas-'+id_publicacao).html());
+	    	if(soma == '')
+	    		return; 
+	   		qnt = parseInt(soma) - 1;
+	   		if(qnt == 0)
+	   			qnt = '';
+
+	   		$('#curtir-'+id_publicacao).removeClass('fa-thumbs-up');
+	   		$('#curtir-'+id_publicacao).addClass('fa-thumbs-o-up');
+            $('#curtir-'+id_publicacao).removeAttr('onclick');
+            $('#curtir-'+id_publicacao+' > .texto-curtr').html('Curtir');
+            $('#curtir-'+id_publicacao).attr('onclick', 'curtir('+id_publicacao+')');
+            $('.qnt-curtidas-'+id_publicacao).html(qnt);
+
+            $('#nao-curti-'+id_publicacao).removeAttr('onclick');
+            $('#nao-curti-'+id_publicacao).attr('onclick', 'naoCurti('+id_publicacao+')');
+          
+        }
+    );
+}
+
+function naoCurti(id_publicacao)
+{
+	$.post(
+           '/social-uno/index/naoCurtiPublicacao',
+        {
+            data: id_publicacao
+        },
+        function (data, status) {
+                soma = $.trim($('.qnt-nao-curti-'+id_publicacao).html());
+            	if(soma == '')
+            		soma = 0; 
+           		qnt = parseInt(soma) + 1;
+                $('#nao-curti-'+id_publicacao).removeClass('fa-thumbs-o-down');
+                $('#nao-curti-'+id_publicacao).addClass('fa-thumbs-down');
+                $('#nao-curti-'+id_publicacao+' > .texto-nao-curti').html('Desfazer não gostei');
+                $('#nao-curti-'+id_publicacao).removeAttr('onclick');
+                $('#nao-curti-'+id_publicacao).attr('onclick', 'desfazNaoCurti('+id_publicacao+')');
+                $('.qnt-nao-curti-'+id_publicacao).html(qnt);
+
+                $('#curtir-'+id_publicacao).removeAttr('onclick');
+                $('#curtir-'+id_publicacao).attr('onclick', 'nadaFazer('+id_publicacao+')');
+        }
+    );
+}
+
+function desfazNaoCurti(id_publicacao)
+{
+	$.post(
+           '/social-uno/index/descurtirPublicacao',
+        {
+            data: id_publicacao
+        },
+        function (data, status) {
+            soma = $.trim($('.qnt-nao-curti-'+id_publicacao).html());
+	    	if(soma == '')
+	    		return; 
+	   		qnt = parseInt(soma) - 1;
+	   		if(qnt == 0)
+	   			qnt = '';
+
+	   		$('#nao-curti-'+id_publicacao).removeClass('fa-thumbs-down');
+	   		$('#nao-curti-'+id_publicacao).addClass('fa-thumbs-o-down');
+            $('#nao-curti-'+id_publicacao).removeAttr('onclick');
+            $('#nao-curti-'+id_publicacao+' > .texto-nao-curti').html('Não gostei');
+            $('#nao-curti-'+id_publicacao).attr('onclick', 'naoCurti('+id_publicacao+')');
+            $('.qnt-nao-curti-'+id_publicacao).html(qnt);
+
+            $('#curtir-'+id_publicacao).removeAttr('onclick');
+            $('#curtir-'+id_publicacao).attr('onclick', 'curtir('+id_publicacao+')');
+          
+        }
+    );
+}
 
 function ajaxBuscaPrimitive()
 {

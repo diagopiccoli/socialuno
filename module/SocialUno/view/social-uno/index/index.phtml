@@ -1,3 +1,7 @@
+<?php
+	//echo '<pre>';var_dump($publicacoes); exit;
+?>
+
 <div class="div-limiter">
 	<!-- -->
 	<div class="div-colum-perfil transition-all">
@@ -90,6 +94,52 @@
 				<p> <?= $value['pub']['publicacao']?> </p>
 				<p> <?= $value['pub']['data_publicacao']->format('d/m/Y H:i:s')?> para <?= strtoupper($value['pub']['tipo_publicacao']['desc_publicacao'])?>  </p>
 				<p> <img src="<?=$value['foto']?>"> </p>
+
+				<?php 
+					$classCurtir = 'fa-thumbs-o-up';
+					$onclickCurtir = 'curtir';
+					$htmlCurti = 'Curtir';
+
+					$classNaoCurti = 'fa-thumbs-o-down';
+					$onclickNaoCurti = 'naoCurti';
+					$htmlNaoCurti = 'Não gostei';
+
+				//echo '<pre>'; var_dump($value); exit;
+
+					if($value['curtir']['usuario']){
+						$classCurtir = 'fa-thumbs-up';
+						$onclickCurtir = 'descurtir';
+						$onclickNaoCurti = 'nadaFazer';
+						$htmlCurti = 'Descurtir';
+					}
+
+					if($value['nao_curti']['usuario']){
+						$classNaoCurti = 'fa-thumbs-down';
+						$onclickNaoCurti = 'desfazNaoCurti';
+						$onclickCurtir = 'nadaFazer';
+						$htmlNaoCurti = 'Desfazer não gostei';
+					}
+
+				?>
+				<div class="curtit-comentar">
+				
+					<span class="fa <?=$classCurtir?> cursor-pointer" id="curtir-<?=$value['pub']['id']?>" onclick="<?=$onclickCurtir?>(<?=$value['pub']['id']?>)"> 
+
+						<span class='texto-curtr'><?=$htmlCurti?> </span> 
+						<span class="qnt-curtidas-<?=$value['pub']['id']?>"> <?=($value['curtir']['quantidade'] > 0) ? $value['curtir']['quantidade']   : ''  ?> </span>
+
+					</span>
+					<br>	
+					
+					<span class="fa <?=$classNaoCurti?> cursor-pointer" id="nao-curti-<?=$value['pub']['id']?>" onclick="<?=$onclickNaoCurti?>(<?=$value['pub']['id']?>)"> 
+						
+						<span class="texto-nao-curti"><?=$htmlNaoCurti?></span>
+						<span class="qnt-nao-curti-<?=$value['pub']['id']?>" <?=($value['nao_curti']['quantidade'] > 0) ? $value['nao_curti']['quantidade']   : ''  ?> </span>
+
+					</span>
+					
+				</div>
+
 				</div>
 			<?php } ?>
 			<!-- -->

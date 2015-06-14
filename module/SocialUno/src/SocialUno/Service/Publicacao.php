@@ -6,6 +6,7 @@ use SocialUno\Service\Service;
 use SocialUno\Model\Publicacao as PublicacaoModel;
 use SocialUno\Model\Fotos as FotosModel;
 use SocialUno\Model\Album as AlbumModel;
+use SocialUno\Model\Curtidas as CurtidasModel;
 
 class Publicacao extends Service
 {
@@ -13,7 +14,7 @@ class Publicacao extends Service
 		{
 
 			$tipo_publicacao = $this->getObjectManager()->find('SocialUno\Model\TipoPublicacao', (int)$post['permissao']);
-			$usuario =  $this->getObjectManager()->find('SocialUno\Model\Usuario', (int)$idUser);
+			$usuario = $this->getObjectManager()->find('SocialUno\Model\Usuario', (int)$idUser);
 			$quantidadeFiles = count($files['name']);
 
 			for($i=0;$i<$quantidadeFiles;$i++){
@@ -63,14 +64,14 @@ class Publicacao extends Service
 				$publicacao->setTipoPublicacao($tipo_publicacao);
 				$publicacao->setUsuario($usuario);
 				$publicacao->setDataPublicacao(new \DateTime('now'));
-				$publicacao = $this->getObjectManager()->persist($publicacao);
+				$this->getObjectManager()->persist($publicacao);
 			}
 
 			try {
 	            $this->getObjectManager()->flush();
 	            return true;
 	        } catch (Exception $exc) {
-	            echo $ecx;
+	            return false;
 	        }
 
 		}
@@ -107,6 +108,65 @@ class Publicacao extends Service
 
 	        return $select->getQuery()->getArrayResult();
 
+		}
+
+		public function curtirPublicacao($id, $idUser, $tipo)
+		{
+			$curtir = new CurtidasModel();
+
+			$usuario = $this->getObjectManager()->find('SocialUno\Model\Usuario', (int)$idUser);
+			$publicacao = $this->getObjectManager()->find('SocialUno\Model\Publicacao', (int)$id);
+
+			$curtir->setUsuario($usuario);
+			$curtir->setPublicacao($publicacao);
+			$curtir->setTipo($tipo);
+
+			$this->getObjectManager()->persist($curtir);
+
+			try {
+	            $this->getObjectManager()->flush();
+	            return true;
+	        } catch (Exception $exc) {
+	            return false;
+	        }
+
+		}
+
+		public function descurtirPublicacao($id, $idUser)
+		{
+			$curtir = $this->getObjectManager()->getRepository('SocialUno\Model\Curtidas')->findOneBy(array('usuario' => $idUser, 'publicacao' => $id));
+	        $this->getObjectManager()->remove($curtir);
+	        try {
+	            $this->getObjectManager()->flush();
+	            return true;
+	        } catch (\Exception $ex) {
+	            return false;
+	        }
+		}
+
+		public function buscaCurtidas($id_publicacao, $idUser, $tipo)
+		{
+
+			//var_dump($id_publicacao, $idUser , $tipo); exit;
+			$select = $this->getObjectManager()->createQueryBuilder()
+	                ->select('curtidas')
+	                ->from('SocialUno\Model\Curtidas', 'curtidas')
+	                ->where("curtidas.publicacao = $id_publicacao and curtidas.tipo = '$tipo'");
+
+	        $resultCurtidas = $select->getQuery()->getArrayResult();
+
+	         $select = $this->getObjectManager()->createQueryBuilder()
+	                ->select('usu.id')
+	                ->from('SocialUno\Model\Curtidas', 'curtidas')
+	                ->join('curtidas.usuario', 'usu')
+	                ->where("curtidas.publicacao = $id_publicacao and curtidas.tipo = '$tipo' and curtidas.usuario = $idUser");
+
+	        $resultUserCurtir = $select->getQuery()->getArrayResult() ? $select->getQuery()->getArrayResult()[0]['id'] : '';
+
+	        return [
+	        	'quantidade' => count($resultCurtidas),
+	        	'usuario' => $resultUserCurtir
+	        ];
 		}
 
 }

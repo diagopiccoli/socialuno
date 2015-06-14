@@ -39,4 +39,39 @@ class Curtidas
      */
     protected $tipo;
 
+    function getId()
+    {
+        return $this->id;
+    }
+
+    function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    function getPublicacao()
+    {
+        return $this->publicacao;
+    }
+
+    function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
+    function setPublicacao($publicacao)
+    {
+        $this->publicacao = $publicacao;
+    }
+
+    function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
 }
