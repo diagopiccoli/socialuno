@@ -45,3 +45,4 @@ $('#fotosLinhaTempo').change(function(){
     $('.quantidade-imagens').html('Quantidade de imagens: '+qtde+'/4');
     return true;
 });
+

@@ -1,53 +1,135 @@
-<!-- -->
-<div class="div-box-public div-box transition-all">
+<div class="div-limiter">
+	<!-- -->
+	<div class="div-colum-perfil transition-all">
 
-	<form id="form-publicacao" class="" name="" action="" method="POST" enctype="multipart/form-data">
-	
 		<!-- -->
-		<div class="form-box">	
-			<textarea id="text-area-publicacao" name="text-area-publicacao" class="form-group" placeholder="Compartilhe algo com os seus amigos..."></textarea>
+		<div class="div-foto-perfil div-box" data-toggle="tooltip" data-placement="bottom" title="Clique para alterar a foto de perfil">
+			<a href="javascript:void(0)" data-toggle="modal" data-target="#modal-foto-perfil">
+				<img src="<?=$this->session()->fotoPerfil?>">
+			</a>
 		</div>
-		<div class="hide">
-			<input type="file" name="fotosLinhaTempo[]" id="fotosLinhaTempo" multiple>
-		</div>
+		
 		<!-- -->
-		<div class="form-box text-align-right">
-			<div class="quantidade-imagens">
+		<div class="div-conf-perfil">
+		
+			<ul id="menu-perfil">
+				<li id="li-publicacoes" class="active">
+					<a href="/social-uno/index/index">
+						<i class="fa fa-newspaper-o"></i> Publicações
+					</a>
+				</li>
+				<li id="li-mensagens">
+					<a href="javascript:void(0)">
+						<i class="fa fa-comments"></i> Mensagens
+					</a>
+				</li>
+				<li id="li-notificacoes">
+					<a href="/social-uno/notificacoes/index">
+						<i class="fa fa-bullhorn"></i> Notificações <?=$solicitacoes?>
+					</a>
+				</li>
+				<li id="li-amigos">
+					<a href="javascript:void(0)">
+						<i class="fa fa-comments"></i> Amigos <?=count($amigos)?>
+					</a>
+				</li>
+				<li id="li-fotos">
+					<a href="javascript:void(0)">
+						<i class="fa fa-camera"></i> Fotos
+					</a>
+				</li>
+				<li id="li-configuracoes">
+					<a href="/social-uno/configuracoes/index">
+						<i class="fa fa-cog"></i> Configurações
+					</a>
+				</li>
+			</ul>	
+		
+		</div>
 
+	</div>
+
+	<div class="div-colum-public">
+
+	<!-- -->
+		<div class="div-box-ind-public">
+
+			<!-- -->
+			<div class="div-box-public div-box transition-all">
+
+				<form id="form-publicacao" class="" name="" action="" method="POST" enctype="multipart/form-data">
+				
+					<!-- -->
+					<div class="form-box">	
+						<textarea id="text-area-publicacao" name="text-area-publicacao" class="form-group" placeholder="Compartilhe algo com os seus amigos..."></textarea>
+					</div>
+					<div class="hide">
+						<input type="file" name="fotosLinhaTempo[]" id="fotosLinhaTempo" multiple>
+					</div>
+					<!-- -->
+					<div class="form-box text-align-right">
+						<div class="quantidade-imagens">
+
+						</div>
+
+						<div class="div-input-select-publicacao" data-toggle="tooltip" data-placement="bottom" title="Quem poderá ver essa publicação?">
+							<select name="permissao">
+								<option value="1" selected="" ></i> Somente eu</option>
+								<option value="2">Amigos</option>
+								<option value="3">Todos</option>
+							</select>
+						</div> 
+						<label id="" class="btn principal icon-camera" type="button" data-toggle="tooltip" data-placement="bottom" title="Adicionar fotos" for="fotosLinhaTempo"><i class="fa fa-camera icon-camera"></i></label>
+					<!-- 	<button id="" class="btn principal" type="button" data-toggle="tooltip" data-placement="bottom" title="Adicionar pessoas"><i class="fa fa-user-plus"></i></button> -->
+						<button id="publicar-post" class="btn principal" type="submit">Publicar</button>
+					</div>			
+					
+				</form>
+
+			</div>	
+
+			
+			<!-- -->
+			<div class="div-box-ind-ind-public div-box">
 			</div>
 
-			<div class="div-input-select-publicacao" data-toggle="tooltip" data-placement="bottom" title="Quem poderá ver essa publicação?">
-				<select name="permissao">
-					<option value="1" selected="" ></i> Somente eu</option>
-					<option value="2">Amigos</option>
-					<option value="3">Todos</option>
-				</select>
-			</div> 
-			<label id="" class="btn principal icon-camera" type="button" data-toggle="tooltip" data-placement="bottom" title="Adicionar fotos" for="fotosLinhaTempo"><i class="fa fa-camera icon-camera"></i></label>
-			<button id="publicar-post" class="btn principal" type="submit">Publicar</button>
-		</div>			
-		
-	</form>
+			<!-- -->
+			<div class="div-box-ind-ind-public div-box">
+			</div>
+			
+			<!-- -->
+			<div class="div-box-ind-ind-public div-box">
+			</div>
+						
+		</div>
+	</div>
+
+	<div class="div-colum-destaque div-box transition-all">
+							
+		<input type="text" id="find_friends" placeholder="Busque por usuários" data-callback="ajaxBuscaUsuarios('#find_friends')" data-icon="#icon-busca-usuarios" data-resposta="#resposta-busca-usuarios" data-ajax>
+		<div id="icon-busca-usuarios" class="icon-busca"></div>
+		<div id="resposta-busca-usuarios" class="resposta-busca-usuarios div-box hide">
+			<div class="resposta-html"></div>
+		</div>
+
+
+		<?php for($i=0;$i<6;$i++){
+				if(isset($amigos[$i])){
+				?>
+					<a href="/social-uno/friend-profile/index?user=<?=$amigos[$i]['user']['id']?>">
+					<div class="amigos-index form-box width-50">
+						<img src="<?= $amigos[$i]['foto'];?>">
+						<p> <?=$amigos[$i]['user']['nome_exibicao']?>
+					</div>
+					</a>
+	   	 <?php }
+	    	else{
+	    		echo '';
+	    	}
+	    } ?>
+	</div>
 
 </div>
-
-<!-- -->
-<div class="div-box-ind-public">
-	
-	<!-- -->
-	<div class="div-box-ind-ind-public div-box">
-	</div>
-
-	<!-- -->
-	<div class="div-box-ind-ind-public div-box">
-	</div>
-	
-	<!-- -->
-	<div class="div-box-ind-ind-public div-box">
-	</div>
-				
-</div>
-
 
 <?php 
 echo $this->headScript()  

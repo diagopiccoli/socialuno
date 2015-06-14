@@ -41,4 +41,38 @@ class Amizades
      */
     protected $status_amizade;
 
+    function getId()
+    {
+        return $this->id;
+    }
+
+    function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    function getAmizade()
+    {
+        return $this->amizade;
+    }
+
+    function getStatusAmizade()
+    {
+        return $this->status_amizade;
+    }
+
+    function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
+    function setAmizade($amizade)
+    {
+        $this->amizade = $amizade;
+    }
+
+    function setStatusAmizade($status_amizade)
+    {
+        $this->status_amizade = $status_amizade;
+    }
 }

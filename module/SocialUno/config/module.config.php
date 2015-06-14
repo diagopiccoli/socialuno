@@ -61,7 +61,9 @@ return array(
         'invokables' => array(
             'SocialUno\Service\Usuario' => 'SocialUno\Service\Usuario',
             'SocialUno\Service\Validar' => 'SocialUno\Service\Validar',
-            'SocialUno\Service\Publicacao' => 'SocialUno\Service\Publicacao'
+            'SocialUno\Service\Publicacao' => 'SocialUno\Service\Publicacao',
+            'SocialUno\Service\Foto' => 'SocialUno\Service\Foto',
+            'SocialUno\Service\Album' => 'SocialUno\Service\Album'
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
@@ -87,7 +89,8 @@ return array(
             'SocialUno\Controller\Login' => 'SocialUno\Controller\LoginController',
             'SocialUno\Controller\Index' => 'SocialUno\Controller\IndexController',
             'SocialUno\Controller\FriendProfile' => 'SocialUno\Controller\FriendProfileController',
-            'SocialUno\Controller\Configuracoes' => 'SocialUno\Controller\ConfiguracoesController'
+            'SocialUno\Controller\Configuracoes' => 'SocialUno\Controller\ConfiguracoesController',
+            'SocialUno\Controller\Notificacoes' => 'SocialUno\Controller\NotificacoesController'
         ),
     ),
     'view_manager' => array(

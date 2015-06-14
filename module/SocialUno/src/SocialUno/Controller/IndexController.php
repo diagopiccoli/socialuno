@@ -15,11 +15,27 @@ class IndexController extends ActionController
         $session = $this->getServiceLocator()->get('Session');
            //$session->offsetUnset('user');
         if (!$session->offsetGet('user'))
-            return $this->redirect()->toUrl('/social-uno/login/index');                        
-        
-        return new ViewModel(
-                ['fotoPerfil' => $session->fotoPerfil]
-        );
+            return $this->redirect()->toUrl('/social-uno/login/index'); 
+
+        $solicitacoes = $this->getService('SocialUno\Service\Usuario')->buscaSolicitacoes($session->offsetGet('user')->getId()); 
+
+        $amigos = $this->getService('SocialUno\Service\Usuario')->buscaAmigos($session->offsetGet('user')->getId()); 
+ 
+        $arrAux = [];
+        foreach($amigos as $list){
+            if($list['usuario']['id'] != $session->offsetGet('user')->getId()){
+                $arrAux[] = ['user' => $list['usuario'], 'foto' => $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($list['usuario']['id'])];
+            }
+            if($list['amizade']['id'] != $session->offsetGet('user')->getId()){
+                $arrAux[] =  ['user' => $list['amizade'], 'foto' => $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($list['amizade']['id'])];
+            }
+        }           
+    
+        return new ViewModel([
+                'fotoPerfil' => $session->fotoPerfil,
+                'solicitacoes' => count($solicitacoes),
+                'amigos' => $arrAux
+        ]);
     }
     
     public function logoutAction()

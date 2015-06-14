@@ -1,3 +1,95 @@
 <?php
 
-echo 'seboleie seu';
+//	var_dump($dadosUsuario);
+
+?>
+
+<div class="div-limiter">
+	<!-- -->
+	<div class="div-colum-perfil transition-all">
+
+		<!-- -->
+		<div class="div-foto-perfil div-box" data-toggle="tooltip" data-placement="bottom" title="Clique para alterar a foto de perfil">
+			<a href="javascript:void(0)" data-toggle="modal" data-target="#modal-foto-perfil">
+				<img src="<?=$fotoUsuario?>">
+			</a>
+		</div>
+		
+		<!-- -->
+		<div class="div-conf-perfil">
+		
+			<ul id="menu-perfil">
+				<li id="li-publicacoes">
+					<a href="/social-uno/index/index">
+						<i class="fa fa-camera"></i> Albuns <?=$albuns?>
+					</a>
+				</li>
+			</ul>	
+		
+		</div>
+
+	</div>
+
+	<div class="div-colum-public">
+
+	<!-- -->
+		<div class="div-box-ind-public">
+
+			<!-- -->
+			<div class="div-box-public div-box transition-all">
+
+					<!-- -->
+					<div class="form-box width-100">
+						<input class="hide" type="hidden" id="id_usuario_perfil" value="<?=$dadosUsuario->getId()?>">	
+						<div class="form-box width-50">
+							<p><?=$dadosUsuario->getNome_exibicao();?></p>
+							<p><?=$dadosUsuario->getStatus();?></p>
+							<p><?=$dadosUsuario->getData_nascimento()->format('d/m/Y');?></p>
+							<p><?=$dadosUsuario->getSexo();?></p>
+						</div>
+
+						<div class="form-box width-50 mensagem-usuario-adicionar">
+							<p><?=$tipo_usuario?></p>
+						</div>
+					</div>
+					<!-- -->
+
+			</div>	
+
+			<?php foreach($publicacoes as $list){ ?>
+							<!-- -->
+			<div class="div-box-ind-ind-public div-box text-align-left">
+				<?= $list['publicacao'] ?>
+
+
+				<div class="comentar-publicacao">	
+				</div>
+
+			</div>
+			
+			<?php } ?>
+
+
+						
+		</div>
+	</div>
+
+	<div class="div-colum-destaque div-box transition-all">
+							
+		<input type="text" id="find_friends" placeholder="Busque por usuários" data-callback="ajaxBuscaUsuarios('#find_friends')" data-icon="#icon-busca-usuarios" data-resposta="#resposta-busca-usuarios" data-ajax>
+		<div id="icon-busca-usuarios" class="icon-busca"></div>
+		<div id="resposta-busca-usuarios" class="resposta-busca-usuarios div-box hide">
+			<div class="resposta-html"></div>
+		</div>
+	        
+	</div>
+
+</div>
+
+
+<?php
+
+echo $this->headScript()  
+->prependFile($this->basePath() . '/js/friends-profile/friends-profile.js');
+
+?>

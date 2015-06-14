@@ -5,6 +5,7 @@ namespace SocialUno\Service;
 use SocialUno\Service\Service;
 use SocialUno\Model\Usuario as UsuarioModel;
 use SocialUno\Model\FotosPerfis as FotosPerfis;
+use SocialUno\Model\Amizades as AmizadesModel;
 
 class Usuario extends Service
 {
@@ -107,7 +108,7 @@ class Usuario extends Service
                 ->join('foto.usuario', 'usu')
                 ->orderBy('usu.nome_exibicao', 'ASC')
                 ->where("usu.nome_exibicao LIKE ?1")
-                ->setParameter(1, $values['busca'] . "%");
+                ->setParameter(1, "%". $values['busca'] . "%");
 
         return $select->getQuery()->getResult();      
     }
@@ -144,6 +145,19 @@ class Usuario extends Service
         }
     }
 
+    public function buscaAmigos($idUser)
+    {
+         $select = $this->getObjectManager()->createQueryBuilder()
+                ->select('amizades', 'usuario', 'amizade')
+                ->from('SocialUno\Model\Amizades', 'amizades')
+                ->join('amizades.usuario', 'usuario')
+                ->join('amizades.amizade', 'amizade')
+                ->where("amizades.usuario = ?1 or amizades.amizade = ?1 and amizades.status_amizade = 1")
+                ->setParameter(1, $idUser);
+
+        return $select->getQuery()->getArrayResult();
+    }
+
     public function changeStatus($id, $onoffswitch)
     {
         $usuario = $this->getObjectManager()->find('SocialUno\Model\Usuario', $id);
@@ -158,5 +172,77 @@ class Usuario extends Service
             return false;
         }
     }
+
+    public function verificarAmizade($idUser)
+    {
+         $select = $this->getObjectManager()->createQueryBuilder()
+                ->select('usuario.id as id_adicionador', 'amizade.id as id_adicionado', 'status.id as id_status')
+                ->from('SocialUno\Model\Amizades', 'amizades')
+                ->join('amizades.status_amizade', 'status')
+                ->join('amizades.usuario', 'usuario')
+                ->join('amizades.amizade', 'amizade')
+                ->where("amizades.usuario = ?1 or amizades.amizade = ?1")
+                ->setParameter(1, $idUser);
+
+        return $select->getQuery()->getArrayResult()[0];      
+    }
     
+    public function adicionarAmigo($id_amigo, $id_usuario, $opt = null)
+    {
+
+        $amizades = new AmizadesModel();
+
+        $amigo = $this->getObjectManager()->find('SocialUno\Model\Usuario', $id_amigo);
+        $usuario = $this->getObjectManager()->find('SocialUno\Model\Usuario', $id_usuario);
+        $tipo = ($opt) ? 1 : 2;
+        $status_amizade = $this->getObjectManager()->find('SocialUno\Model\StatusAmizade', $tipo);
+
+        $amizades->setUsuario($usuario);
+        $amizades->setAmizade($amigo);
+        $amizades->setStatusAmizade($status_amizade);
+
+        $this->getObjectManager()->persist($amizades);
+
+        try {
+            $this->getObjectManager()->flush();
+            return true;
+        } catch (Exception $exc) {
+            return false;
+        }
+    }
+
+    public function cancelarSolicitacao($id_amigo, $id_usuario)
+    {
+        $solicitacao = $this->getObjectManager()->getRepository('SocialUno\Model\Amizades')->findOneBy(array('usuario' => $id_usuario, 'amizade' => $id_amigo));
+
+        $this->getObjectManager()->remove($solicitacao);
+        try {
+            $this->getObjectManager()->flush();
+            return true;
+        } catch (\Exception $ex) {
+            return false;
+        }
+    }
+
+    public function buscaSolicitacoes($idUser)
+    {
+       $select = $this->getObjectManager()->createQueryBuilder()
+                ->select('usuario.id as id_adicionador', 'amizade.id as id_adicionado', 'status.id as id_status', 'usuario.nome', 'usuario.nome')
+                ->from('SocialUno\Model\Amizades', 'amizades')
+                ->join('amizades.status_amizade', 'status')
+                ->join('amizades.usuario', 'usuario')
+                ->join('amizades.amizade', 'amizade')
+                ->where("amizades.amizade = ?1")
+                ->setParameter(1, $idUser);
+
+        return $select->getQuery()->getArrayResult();   
+    }
+
+    public function aceitarSolicitacao($id_usuario, $id_amigo)
+    {
+       $this->cancelarSolicitacao($id_usuario, $id_amigo);
+       $this->adicionarAmigo($id_amigo, $id_usuario, 'true');
+
+       return true;
+    }
 }

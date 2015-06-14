@@ -51,86 +51,10 @@
 		
 		<!-- -->
 		<div class="div-total-meio">
-			<div class="container">
-			    
-		    	<!-- -->
-				<div class="div-limiter">
-					
-					<?php if($this->session()->offsetGet('user')) { ?>
-						
-						<!-- -->
-						<div class="div-colum-perfil transition-all">
-						
-							<!-- -->
-							<div class="div-foto-perfil div-box" data-toggle="tooltip" data-placement="bottom" title="Clique para alterar a foto de perfil">
-								<a href="javascript:void(0)" data-toggle="modal" data-target="#modal-foto-perfil">
-									<img src="<?=$this->session()->fotoPerfil?>">
-								</a>
-							</div>
-							
-							<!-- -->
-							<div class="div-conf-perfil">
-							
-								<ul id="menu-perfil">
-									<li id="li-publicacoes" class="active">
-										<a href="/social-uno/index/index">
-											<i class="fa fa-newspaper-o"></i> Publicações
-										</a>
-									</li>
-									<li id="li-mensagens">
-										<a href="javascript:void(0)">
-											<i class="fa fa-comments"></i> Mensagens
-										</a>
-									</li>
-									<li id="li-notificacoes">
-										<a href="javascript:void(0)">
-											<i class="fa fa-bullhorn"></i> Notificações
-										</a>
-									</li>
-									<li id="li-amigos">
-										<a href="javascript:void(0)">
-											<i class="fa fa-comments"></i> Amigos
-										</a>
-									</li>
-									<li id="li-fotos">
-										<a href="javascript:void(0)">
-											<i class="fa fa-camera"></i> Fotos
-										</a>
-									</li>
-									<li id="li-configuracoes">
-										<a href="/social-uno/configuracoes/index">
-											<i class="fa fa-cog"></i> Configurações
-										</a>
-									</li>
-								</ul>	
-							
-							</div>
-						
-						</div>
-
-					<?php } ?>
-
-					<!-- -->
-					<div class="div-colum-public">
-			    		<?php echo $this->content; ?>
-					</div>
-
-					<?php if($this->session()->offsetGet('user')) { ?>
-				    	<!-- -->
-						<div class="div-colum-destaque div-box transition-all">
-						
-							<input type="text" id="find_friends" placeholder="Busque por usuários" data-callback="ajaxBuscaUsuarios('#find_friends')" data-icon="#icon-busca-usuarios" data-resposta="#resposta-busca-usuarios" data-ajax>
-							<div id="icon-busca-usuarios" class="icon-busca"></div>
-							<div id="resposta-busca-usuarios" class="resposta-busca-usuarios div-box hide">
-								<div class="resposta-html"></div>
-							</div>
-					            
-						</div>
-
-					<?php } ?>
-
-				</div>
-
+			<div class="container">			    
+				
+			    <?php echo $this->content; ?>
+	
 			</div>
 		</div>
 		

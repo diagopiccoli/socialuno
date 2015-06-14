@@ -74,4 +74,22 @@ class Publicacao extends Service
 
 		}
 
+
+		public function buscaPublicacoesUsuario($idUser,$amizade)
+		{
+			$sql = 'AND tipo.id = 3';
+			if($amizade['id_status'] == 1){
+				$sql = ' AND tipo.id <> 1';
+			}
+
+			$select = $this->getObjectManager()->createQueryBuilder()
+	                ->select('pub.id, pub.publicacao, tipo.desc_publicacao')
+	                ->from('SocialUno\Model\Publicacao', 'pub')
+	                ->join('pub.tipo_publicacao', 'tipo')
+	                ->where("pub.usuario = ?1 $sql")
+	                ->setParameter(1, $idUser);
+
+	        return $select->getQuery()->getArrayResult();  
+		}
+
 }
