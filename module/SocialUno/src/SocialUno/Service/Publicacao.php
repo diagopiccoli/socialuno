@@ -92,4 +92,18 @@ class Publicacao extends Service
 	        return $select->getQuery()->getArrayResult();  
 		}
 
+
+		public function buscaPublicacoesAmigos($ids_amigos)
+		{
+			$select = $this->getObjectManager()->createQueryBuilder()
+	                ->select('pub', 'tipo','usuario')
+	                ->from('SocialUno\Model\Publicacao', 'pub')
+	                ->join('pub.tipo_publicacao', 'tipo')
+	                ->join('pub.usuario', 'usuario')
+	                ->where("pub.usuario in ($ids_amigos) and pub.tipo_publicacao <> 1");
+
+	        return $select->getQuery()->getArrayResult();
+
+		}
+
 }

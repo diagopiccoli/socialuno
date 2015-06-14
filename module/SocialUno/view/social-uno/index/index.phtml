@@ -83,18 +83,17 @@
 
 			</div>	
 
-			
-			<!-- -->
-			<div class="div-box-ind-ind-public div-box">
-			</div>
+			<?php foreach ($publicacoes as $key => $value) { ?>
+				<div class="div-box-ind-ind-public div-box">
 
+				<p> <?= $value['pub']['usuario']['nome_exibicao']?> </p>
+				<p> <?= $value['pub']['publicacao']?> </p>
+				<p> <img src="<?=$value['foto']?>"> </p>
+				</div>
+			<?php } ?>
 			<!-- -->
-			<div class="div-box-ind-ind-public div-box">
-			</div>
 			
-			<!-- -->
-			<div class="div-box-ind-ind-public div-box">
-			</div>
+
 						
 		</div>
 	</div>

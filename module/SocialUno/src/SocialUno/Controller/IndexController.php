@@ -18,23 +18,32 @@ class IndexController extends ActionController
             return $this->redirect()->toUrl('/social-uno/login/index'); 
 
         $solicitacoes = $this->getService('SocialUno\Service\Usuario')->buscaSolicitacoes($session->offsetGet('user')->getId()); 
-
         $amigos = $this->getService('SocialUno\Service\Usuario')->buscaAmigos($session->offsetGet('user')->getId()); 
  
-        $arrAux = [];
+        $arrAux = []; $ids_amigos = '';
         foreach($amigos as $list){
             if($list['usuario']['id'] != $session->offsetGet('user')->getId()){
                 $arrAux[] = ['user' => $list['usuario'], 'foto' => $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($list['usuario']['id'])];
+                $ids_amigos .= $list['usuario']['id'].', ';
             }
             if($list['amizade']['id'] != $session->offsetGet('user')->getId()){
                 $arrAux[] =  ['user' => $list['amizade'], 'foto' => $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($list['amizade']['id'])];
+                $ids_amigos .= $list['amizade']['id'].', ';
             }
-        }           
-    
+        }     
+
+        $ids_amigos .=  $session->offsetGet('user')->getId();
+        $publicacoes = $this->getService('SocialUno\Service\Publicacao')->buscaPublicacoesAmigos($ids_amigos);
+        $arrAuxPub = [];
+        foreach ($publicacoes as $key => $value) {
+                $arrAuxPub[] = ['pub' => $value, 'foto' => $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($list['usuario']['id'])];
+        }    
+
         return new ViewModel([
                 'fotoPerfil' => $session->fotoPerfil,
                 'solicitacoes' => count($solicitacoes),
-                'amigos' => $arrAux
+                'amigos' => $arrAux,
+                'publicacoes' => $arrAuxPub
         ]);
     }
     
