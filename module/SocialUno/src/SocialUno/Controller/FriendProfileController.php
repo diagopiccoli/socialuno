@@ -43,7 +43,7 @@ class FriendProfileController extends ActionController
             if($amizade['id_status'] == 2){
 
                if($amizade['id_adicionador'] == $user) 
-                    return '<h4 class="cursor-pointer" onclick="adicionarAmigo()">  '. $nome .' lhe enviou uma soliciação de amizade! &nbsp; <span class="fa fa-user-plus"> </span>';
+                    return '<h4 class="cursor-pointer" onclick="adicionaAmigo()">  '. $nome .' lhe enviou uma soliciação de amizade! &nbsp; <span class="fa fa-user-plus"> </span>';
                else
                     return '<h4 class="cursor-pointer" onclick="cancelarSolicitacao()" > Você enviou um soliciação para '. $nome. '<span class="fa fa-user-times"></span>';
             }

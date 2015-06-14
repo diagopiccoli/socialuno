@@ -62,6 +62,7 @@ class Publicacao extends Service
 
 				$publicacao->setTipoPublicacao($tipo_publicacao);
 				$publicacao->setUsuario($usuario);
+				$publicacao->setDataPublicacao(new \DateTime('now'));
 				$publicacao = $this->getObjectManager()->persist($publicacao);
 			}
 
@@ -87,7 +88,8 @@ class Publicacao extends Service
 	                ->from('SocialUno\Model\Publicacao', 'pub')
 	                ->join('pub.tipo_publicacao', 'tipo')
 	                ->where("pub.usuario = ?1 $sql")
-	                ->setParameter(1, $idUser);
+	                ->setParameter(1, $idUser)
+	                ->orderBy('pub.data_publicacao', 'ASC');
 
 	        return $select->getQuery()->getArrayResult();  
 		}
@@ -100,7 +102,8 @@ class Publicacao extends Service
 	                ->from('SocialUno\Model\Publicacao', 'pub')
 	                ->join('pub.tipo_publicacao', 'tipo')
 	                ->join('pub.usuario', 'usuario')
-	                ->where("pub.usuario in ($ids_amigos) and pub.tipo_publicacao <> 1");
+	                ->where("pub.usuario in ($ids_amigos) and pub.tipo_publicacao <> 1")
+	                ->orderBy('pub.data_publicacao', 'ASC');
 
 	        return $select->getQuery()->getArrayResult();
 

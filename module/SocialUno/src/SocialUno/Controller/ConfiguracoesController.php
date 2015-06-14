@@ -31,6 +31,13 @@ class ConfiguracoesController extends ActionController
     	if($this->getService('SocialUno\Service\Usuario')->editUser($this->getRequest()->getPost()['data']))
     		$this->response->setContent(json_encode(true));
 
+        $session = $this->getServiceLocator()->get('Session'); 
+        $dadosUsuario = $this->getService('SocialUno\Service\Usuario')->findUser($session->offsetGet('user')->getId());
+        
+        $session->offsetUnset('user');
+
+        $session->offsetSet('user', $dadosUsuario);
+
 
         return $this->response;
     }

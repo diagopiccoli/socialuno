@@ -39,6 +39,12 @@ class Publicacao
      */
     protected $tipo_publicacao;
 
+    /**
+     * @ORM\Column(type="datetime",) 
+     * @var datetime
+     */
+    protected $data_publicacao;
+
     function getId()
     {
         return $this->id;
@@ -59,6 +65,11 @@ class Publicacao
         return $this->tipo_publicacao;
     }
 
+    function getDataPublicacao()
+    {
+        return $this->data_publicacao;
+    }
+
     function setPublicacao($publicacao)
     {
         $this->publicacao = $publicacao;
@@ -72,6 +83,11 @@ class Publicacao
     function setTipoPublicacao  ($tipo_publicacao)
     {
         $this->tipo_publicacao = $tipo_publicacao;
+    }
+
+    function setDataPublicacao($data_publicacao)
+    {
+        $this->data_publicacao = $data_publicacao;
     }
 
 

@@ -13,7 +13,7 @@ class IndexController extends ActionController
     public function indexAction()
     {
         $session = $this->getServiceLocator()->get('Session');
-           //$session->offsetUnset('user');
+           //   $session->offsetUnset('user');
         if (!$session->offsetGet('user'))
             return $this->redirect()->toUrl('/social-uno/login/index'); 
 
@@ -34,9 +34,11 @@ class IndexController extends ActionController
 
         $ids_amigos .=  $session->offsetGet('user')->getId();
         $publicacoes = $this->getService('SocialUno\Service\Publicacao')->buscaPublicacoesAmigos($ids_amigos);
+
+       //var_dump($publicacoes); exit;
         $arrAuxPub = [];
         foreach ($publicacoes as $key => $value) {
-                $arrAuxPub[] = ['pub' => $value, 'foto' => $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($list['usuario']['id'])];
+                $arrAuxPub[] = ['pub' => $value, 'foto' => $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($value['usuario']['id'])];
         }    
 
         return new ViewModel([

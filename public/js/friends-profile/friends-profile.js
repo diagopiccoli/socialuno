@@ -38,7 +38,7 @@ function cancelarSolicitacao()
     );
 }
 
-function adicionarAmigo()
+function adicionaAmigo()
 {
     $('.mensagem-usuario-adicionar').html('<span class="fa fa-refresh"></span>');
     $.post(
