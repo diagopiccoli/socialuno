@@ -16,6 +16,7 @@ function recusarAmigo(id_amigo)
                     
                     if(data){
                         $('#usuario_'+id_amigo).html('');
+                        window.location.reload();
                     }   
             
             },
@@ -35,6 +36,7 @@ function adicionarAmigo(id_amigo)
                     
                     if(data){
                         $('.nome-usuario').html('Solicitação de amizade aceita!');
+                        window.location.reload();
                     }   
             },
         'json' // tipo dos dados q ira retornar, nesse caso ira esperar "json"
