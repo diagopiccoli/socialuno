@@ -20,7 +20,7 @@ class NotificacoesController extends ActionController
         	$arrayAux[] = [
         		'id' => $value['id_adicionador'],
         		'nome' =>$value['nome'], 
-        		'foto' => $fotoUsuario = $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($value['id_adicionador'])
+        		'foto' => $this->getService('SocialUno\Service\Usuario')->findFotoPerfil($value['id_adicionador'])
         	];
         }                 
     

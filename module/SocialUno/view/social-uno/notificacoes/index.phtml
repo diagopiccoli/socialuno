@@ -70,7 +70,13 @@
 							 <span class="fa fa-user-times cursor-pointer" onclick="recusarAmigo(<?=$list['id']?>)"></span>
 						</div>        
 				</div>
-			<?php } ?>
+			<?php } 
+			if(empty($solicitacoes)){
+
+				echo '<h2> Você não possui nenhum notificaçao </h2>';
+			}
+
+			?>
 			</div>
 						
 		</div>
