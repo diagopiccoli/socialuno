@@ -28,11 +28,6 @@
 						<i class="fa fa-bullhorn"></i> Notificações <?=$solicitacoes?>
 					</a>
 				</li>
-				<li id="li-amigos">
-					<a href="javascript:void(0)">
-						<i class="fa fa-comments"></i> Amigos <?=count($amigos)?>
-					</a>
-				</li>
 				<li id="li-fotos">
 					<a href="javascript:void(0)">
 						<i class="fa fa-camera"></i> Fotos
@@ -113,7 +108,10 @@
 		</div>
 
 
-		<?php for($i=0;$i<6;$i++){
+		<?php 
+		// ajeitar css 
+			for($i=0;$i<6;$i++){
+
 				if(isset($amigos[$i])){
 				?>
 					<a href="/social-uno/friend-profile/index?user=<?=$amigos[$i]['user']['id']?>">

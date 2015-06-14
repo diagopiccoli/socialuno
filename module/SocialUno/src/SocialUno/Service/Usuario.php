@@ -152,7 +152,7 @@ class Usuario extends Service
                 ->from('SocialUno\Model\Amizades', 'amizades')
                 ->join('amizades.usuario', 'usuario')
                 ->join('amizades.amizade', 'amizade')
-                ->where("amizades.usuario = ?1 or amizades.amizade = ?1 and amizades.status_amizade = 1")
+                ->where("(amizades.usuario = ?1 or amizades.amizade = ?1) and amizades.status_amizade = 1")
                 ->setParameter(1, $idUser);
 
         return $select->getQuery()->getArrayResult();
