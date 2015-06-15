@@ -53,6 +53,8 @@ class Publicacao extends Service
 						$this->getObjectManager()->persist($fotos);
 					}
 				}
+
+				$this->getObjectManager()->flush();
 			}
 
 			if(!isset($arrayImg)){
@@ -90,7 +92,7 @@ class Publicacao extends Service
 	                ->join('pub.tipo_publicacao', 'tipo')
 	                ->where("pub.usuario = ?1 $sql")
 	                ->setParameter(1, $idUser)
-	                ->orderBy('pub.data_publicacao', 'ASC');
+	                ->orderBy('pub.data_publicacao', 'DESC');
 
 	        return $select->getQuery()->getArrayResult();  
 		}
@@ -104,7 +106,7 @@ class Publicacao extends Service
 	                ->join('pub.tipo_publicacao', 'tipo')
 	                ->join('pub.usuario', 'usuario')
 	                ->where("pub.usuario in ($ids_amigos) and pub.tipo_publicacao <> 1")
-	                ->orderBy('pub.data_publicacao', 'ASC');
+	                ->orderBy('pub.data_publicacao', 'DESC');
 
 	        return $select->getQuery()->getArrayResult();
 

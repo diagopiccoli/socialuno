@@ -214,6 +214,9 @@ class Usuario extends Service
     public function cancelarSolicitacao($id_amigo, $id_usuario)
     {
         $solicitacao = $this->getObjectManager()->getRepository('SocialUno\Model\Amizades')->findOneBy(array('usuario' => $id_usuario, 'amizade' => $id_amigo));
+        if(!$solicitacao){
+            $solicitacao = $this->getObjectManager()->getRepository('SocialUno\Model\Amizades')->findOneBy(array('usuario' => $id_amigo, 'amizade' => $id_usuario));
+        }
 
         $this->getObjectManager()->remove($solicitacao);
         try {
@@ -232,7 +235,7 @@ class Usuario extends Service
                 ->join('amizades.status_amizade', 'status')
                 ->join('amizades.usuario', 'usuario')
                 ->join('amizades.amizade', 'amizade')
-                ->where("amizades.amizade = ?1")
+                ->where("amizades.amizade = ?1 and amizades.status_amizade = 2")
                 ->setParameter(1, $idUser);
 
         return $select->getQuery()->getArrayResult();   
